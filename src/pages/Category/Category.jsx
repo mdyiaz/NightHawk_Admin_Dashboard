@@ -5,7 +5,7 @@ import CustomPaginationTable from '@/components/shared/CustomTable/CustomPaginat
 import SkeletionTable from '@/components/skeleton/Table';
 import envConfig from '@/configs/envConfig';
 import useNoImage from '@/hooks/useNoImage';
-import { useGetSlidersByPaginationQuery } from '@/store/api/app/website/slider/sliderApiSlice';
+import { useGetCategoriesByPaginationQuery,  } from '@/store/api/app/Category/categoryApiSlice';
 import { useState } from 'react';
 
 const Category = () => {
@@ -16,7 +16,7 @@ const Category = () => {
 	const noImage = useNoImage()
 
 	const { data, isLoading, isError, error, isFetching } =
-		useGetSlidersByPaginationQuery({
+	useGetCategoriesByPaginationQuery({
 			page: paginationPage,
 			limit: limit,
 			order: order,
@@ -46,12 +46,12 @@ const Category = () => {
 		},
 		{
 			Header: 'Title',
-			accessor: 'title',
+			accessor: 'name',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 		{
-			Header: 'Details',
-			accessor: 'details',
+			Header: 'Short Description',
+			accessor: 'short_description',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 	];
@@ -59,7 +59,7 @@ const Category = () => {
 	return (
 		<>
 			<CustomPaginationTable
-				title="Sliders"
+				title="Categories"
 				COLUMNS={COLUMNS}
 				data={data?.data}
 				paginationPage={paginationPage}
@@ -70,6 +70,8 @@ const Category = () => {
 				setOrder={setOrder}
 				search={search}
 				setSearch={setSearch}
+				defaultStatus={false}
+				
 			/>
 		</>
 	);

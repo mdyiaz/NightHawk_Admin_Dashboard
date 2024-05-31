@@ -14,6 +14,8 @@ const CategoryForm = ({ id, data }) => {
 	const { isAuth, auth } = useSelector((state) => state.auth);
 	const navigate = useNavigate();
 
+	console.log("will be update", data);
+
 	const {
 		register,
 		unregister,
@@ -27,27 +29,8 @@ const CategoryForm = ({ id, data }) => {
 	} = useSubmit(id, id ? useUpdateCategoryMutation : useCreateCategoryMutation);
 
 	const handleFormSubmit = async (data) => {
-		// Manipulate the data as needed
-		const formData = new FormData();
 
-		const keys = Object.keys(data);
-
-		keys.forEach((key) => {
-			if (['image'].includes(key)) {
-				if (data[key]) {
-					formData.append('image', data.image[0]);
-				} else {
-					formData.append('image', data.image);
-				}
-			} else {
-				formData.append(key, data[key]);
-			}
-		});
-
-		// console.log("data", data);;
-        // return
-
-		await onSubmit(formData);
+		await onSubmit(data);
 	};
 
 	useEffect(() => {
