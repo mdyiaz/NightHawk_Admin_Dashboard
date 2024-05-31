@@ -49,9 +49,10 @@ const LoginForm = () => {
 				password: data.password,
 			};
 
-			const { data: response } = await login(requestData);
+			const { data: response, error } = await login(requestData);
 
-			console.log(response.data);
+			if (error)
+				throw new Error(error?.data?.message || 'Something went wrong!');
 
 			dispatch(setUser(response.data));
 			navigate(`/`);

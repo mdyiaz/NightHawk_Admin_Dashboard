@@ -11,10 +11,8 @@ import useMenulayout from '@/hooks/useMenulayout';
 import useMobileMenu from '@/hooks/useMobileMenu';
 import useSidebar from '@/hooks/useSidebar';
 import useWidth from '@/hooks/useWidth';
-import { logOut } from '@/store/api/auth/authSlice';
 import { motion } from 'framer-motion';
-import Cookies from 'js-cookie';
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -24,14 +22,6 @@ const Layout = ({ type }) => {
 	const { isAuth, auth } = useSelector((state) => state.auth);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		const accessToken = Cookies.get('accessToken');
-		if (!isAuth || auth?.user?.user_type !== type || !accessToken) {
-			navigate('/login');
-			dispatch(logOut());
-		}
-	}, [isAuth, navigate]);
 
 	const { width, breakpoints } = useWidth();
 	const [collapsed] = useSidebar();

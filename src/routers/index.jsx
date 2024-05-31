@@ -29,17 +29,31 @@ const router = createBrowserRouter([
 	{
 		path: '',
 		// errorElement: <Error />,
+
 		children: [
 			{
 				path: '',
 				element: <AuthLayout />,
 				children: [
+					// add your routes here
+					{
+						path: '',
+						element: <Layout />,
+						children: [
+							{
+								path: '',
+								element: <Dashboard />,
+							},
+						],
+					},
 					{
 						path: 'login',
 						element: <Login />,
 					},
 				],
 			},
+
+			// Don't use down below
 			{
 				path: 'admin',
 				element: <Layout type="admin" />,

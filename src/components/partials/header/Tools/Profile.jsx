@@ -5,18 +5,22 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import UserAvatar from '@/assets/images/all-img/user.png';
+import envConfig from '@/configs/envConfig';
 import { logOut } from '@/store/api/auth/authSlice';
 import { useSelector } from 'react-redux';
-import envConfig from '@/configs/envConfig';
 
 const profileLabel = (auth) => {
-	console.log("auth,", auth)
+	console.log('auth,', auth);
 	return (
 		<div className="flex items-center">
 			<div className="flex-1 ltr:mr-[10px] rtl:ml-[10px]">
 				<div className="lg:h-8 lg:w-8 h-7 w-7 rounded-full">
 					<img
-						src={auth?.user?.user_info?.image ? envConfig.apiUrl + auth?.user?.user_info?.image : UserAvatar}
+						src={
+							auth?.user?.user_info?.image
+								? envConfig.apiUrl + auth?.user?.user_info?.image
+								: UserAvatar
+						}
 						alt=""
 						className="block w-full h-full object-cover rounded-full"
 					/>
@@ -36,7 +40,6 @@ const profileLabel = (auth) => {
 
 const Profile = () => {
 	const { isAuth, auth } = useSelector((state) => state.auth);
-	const user_type = auth.user.user_type;
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -46,18 +49,14 @@ const Profile = () => {
 	};
 
 	const ProfileMenu = [
-		...(['branch','rider'].includes(user_type) ?[{
-			label: 'Profile',
-			icon: 'heroicons-outline:user',
+		[
+			{
+				label: 'Profile',
+				icon: 'heroicons-outline:user',
 
-			action: () => {
-				if (user_type === 'branch') {
-					navigate('/branch/profile')
-				} else if (user_type === 'rider') {
-					navigate('/rider/profile')
-				} 
+				action: () => {},
 			},
-		}]: []),
+		],
 		// {
 		//   label: "Chat",
 		//   icon: "heroicons-outline:chat",
@@ -114,13 +113,15 @@ const Profile = () => {
 					{({ active }) => (
 						<div
 							onClick={() => item.action()}
-							className={`${active
-								? 'bg-slate-100 text-slate-900 dark:bg-slate-600 dark:text-slate-300 dark:bg-opacity-50'
-								: 'text-slate-600 dark:text-slate-300'
-								} block     ${item.hasDivider
+							className={`${
+								active
+									? 'bg-slate-100 text-slate-900 dark:bg-slate-600 dark:text-slate-300 dark:bg-opacity-50'
+									: 'text-slate-600 dark:text-slate-300'
+							} block     ${
+								item.hasDivider
 									? 'border-t border-slate-100 dark:border-slate-700'
 									: ''
-								}`}
+							}`}
 						>
 							<div className={`block cursor-pointer px-4 py-2`}>
 								<div className="flex items-center">
@@ -130,7 +131,6 @@ const Profile = () => {
 									<span className="block text-sm">{item.label}</span>
 								</div>
 							</div>
-
 						</div>
 					)}
 				</Menu.Item>
