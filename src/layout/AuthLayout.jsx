@@ -6,21 +6,15 @@ import { ToastContainer } from 'react-toastify';
 
 const AuthLayout = () => {
 	const { isAuth, auth } = useSelector((state) => state.auth);
+
+	console.log(isAuth, auth);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (!isAuth) {
 			navigate('/login');
-		} else {
-			const user_type = auth?.user?.user_type;
-
-			if (['admin', 'branch', 'rider'].includes(user_type)) {
-				navigate(`/${user_type}`);
-			} else {
-				dispatch({ type: 'LOGOUT' });
-				navigate('/login');
-			}
+			dispatch({ type: 'LOGOUT' });
 		}
 	}, [isAuth, navigate]);
 

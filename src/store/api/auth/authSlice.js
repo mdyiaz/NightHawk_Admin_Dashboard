@@ -4,15 +4,17 @@ import Cookies from 'js-cookie';
 
 const user = localStorage.getItem('user');
 const storedUser = isJson(user) ? JSON.parse(user) : null;
+const token = Cookies.get('token');
 
 const initialStateSchema = {
 	auth: {
-		accessToken: null,
-		refreshToken: null,
-		user: {
-			user_type: null,
-			user_info: {},
+		"_id": "",
+		"email": "",
+		"role": {
+			"_id": "",
+			"name": "",
 		},
+		"token": ""
 	},
 	isAuth: false,
 };
@@ -20,17 +22,16 @@ const initialStateSchema = {
 export const authSlice = createSlice({
 	name: 'auth',
 	initialState:
-		storedUser?.auth?.accessToken && storedUser?.auth?.refreshToken
-			? { ...initialStateSchema, auth: storedUser?.auth, isAuth: true }
-			: initialStateSchema,
+		token && storedUser ? {
+			auth: storedUser,
+			isAuth: true,
+		} : initialStateSchema,
 	reducers: {
 		setUser: (state, action) => {
-			Cookies.set('accessToken', action.payload.accessToken, {
+			Cookies.set('token', action.payload.token, {
 				expires: 1,
 			});
-			Cookies.set('refreshToken', action.payload.refreshToken, {
-				expires: 365,
-			});
+
 
 			localStorage.setItem(
 				'user',
@@ -39,16 +40,12 @@ export const authSlice = createSlice({
 				})
 			);
 
-			const newState = {};
-			newState.auth = action.payload;
-			newState.isAuth = true;
-
 			state.auth = action.payload;
 			state.isAuth = true;
 		},
+
 		logOut: (state, action) => {
-			Cookies.remove('accessToken');
-			Cookies.remove('refreshToken');
+			Cookies.remove('token');
 			localStorage.removeItem('user');
 
 			state.auth = initialStateSchema.auth;
