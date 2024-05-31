@@ -1,5 +1,8 @@
 import AuthLayout from '@/layout/AuthLayout';
 import Layout from '@/layout/Layout';
+import AddCategory from '@/pages/Category/AddCategory';
+import Category from '@/pages/Category/Category';
+import EditCategory from '@/pages/Category/EditCategory';
 
 
 import { lazy } from 'react';
@@ -81,6 +84,33 @@ const router = createBrowserRouter([
 									{
 										path: 'edit',
 										element: <SliderEdit />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'category',
+						children: [
+							{
+								path: '',
+								element: <Category />,
+							},
+							{
+								path: 'new',
+								element: <AddCategory />,
+							},
+							{
+								path: ':id',
+								children: [
+									// {
+									// 	path: '',
+									// 	element: <SliderView />,
+									// },
+									{
+										path: 'edit',
+										element: <EditCategory />,
 									},
 								],
 							},
