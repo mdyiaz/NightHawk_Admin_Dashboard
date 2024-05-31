@@ -16,11 +16,7 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
-import FlatpickerPage from '../DateTimePicker/DateTimePicker';
-import PrintAllParcel from '../PrintAllParcel/PrintAllParcel';
-import SelectBranch from '../Select/SelectBranch';
-import SelectStatus from '../Select/SelectFilterStatus';
-import SelectMerchant from '../Select/SelectMerchant';
+
 import Status from '../status/Status';
 import GlobalFilter from './GlobalFilter';
 
@@ -179,19 +175,7 @@ const CustomPaginationTable = ({
 												</button>
 											</Tooltip>
 										)}
-										{isDelete ||
-										(deleteParcelByAdmin
-											? row?.cell?.row?.original?.status === 1 ||
-											  row?.cell?.row?.original?.status === 2 ||
-											  row?.cell?.row?.original?.status === 3 ||
-											  row?.cell?.row?.original?.status === 4 ||
-											  row?.cell?.row?.original?.status === 5 ||
-											  row?.cell?.row?.original?.status === 6 ||
-											  row?.cell?.row?.original?.status === 7 ||
-											  row?.cell?.row?.original?.status === 8 ||
-											  row?.cell?.row?.original?.status === 9 ||
-											  row?.cell?.row?.original?.status === 10
-											: null) ? (
+										{isDelete ? (
 											<Tooltip
 												content="Delete"
 												placement="top"
@@ -330,75 +314,7 @@ const CustomPaginationTable = ({
 						)}
 					</div>
 				</div>
-				<div className="md:flex mb-6 gap-4">
-					{isToggleStatusShow && (
-						<div className="md:w-[155px] w-full">
-							<label htmlFor="" className="form-label">
-								Status
-							</label>
-							<SelectStatus control={control} all_parcel={true} />
-						</div>
-					)}
-					{isToggleDropdownShow && (
-						<div className="md:w-[155px] w-full">
-							<label htmlFor="" className="form-label">
-								Merchant
-							</label>
-							<SelectMerchant control={control} all_parcel={true} />
-						</div>
-					)}
-					{isToggleBranchShow && (
-						<div className="md:w-[155px] w-full mb-2">
-							<label htmlFor="" className="form-label">
-								Branch
-							</label>
-							<SelectBranch control={control} all_parcel={true} />
-						</div>
-					)}
-					{isDateShow && (
-						<div className="md:w-[155px]">
-							<label htmlFor="" className="form-label">
-								From Date
-							</label>
-							<FlatpickerPage
-								fromDate={fromDate}
-								setFromDate={setFromDate}
-								fromDateShow={true}
-							/>
-						</div>
-					)}
-					{isDateShow && (
-						<div className="md:w-[155px]">
-							<label htmlFor="" className="form-label">
-								To Date
-							</label>
-							<FlatpickerPage
-								toDate={toDate}
-								setToDate={setToDate}
-								toDateShow={true}
-							/>
-						</div>
-					)}
-					{isPrint && (
-						<div className="md:w-[50px]">
-							<label htmlFor="" className="form-label">
-								Print
-							</label>
-							<PrintAllParcel />
-						</div>
-					)}
-					{isExcelExport && (
-						<div className="md:w-[50px]">
-							<label htmlFor="" className="form-label">
-								Excel
-							</label>
-							<AiFillFileExcel
-								onClick={handleExport}
-								className=" border border-gray-300 text-2xl p-2 h-[35px] w-[35px] cursor-pointer"
-							/>
-						</div>
-					)}
-				</div>
+			
 				<div className="overflow-x-auto -mx-6">
 					<div className="inline-block min-w-full align-middle">
 						<div className="overflow-hidden ">
@@ -430,37 +346,7 @@ const CustomPaginationTable = ({
 										</tr>
 									))}
 								</thead>
-								{/* <tbody
-									className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700"
-									{...getTableBodyProps}
-								>
-									{data?.result?.length ? (
-										page.map((row) => {
-											prepareRow(row);
-											return (
-												<tr {...row.getRowProps()} key={row.id}>
-													{row.cells.map((cell) => {
-														return (
-															<td
-																{...cell.getCellProps()}
-																className="table-td"
-																key={cell.id}
-															>
-																{cell.render('Cell')}
-															</td>
-														);
-													})}
-												</tr>
-											);
-										})
-									) : (
-										<tr>
-											<td colSpan={columns.length} className="text-center py-4">
-												No data available
-											</td>
-										</tr>
-									)}
-								</tbody> */}
+							
 
 								<tbody
 									className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700"
