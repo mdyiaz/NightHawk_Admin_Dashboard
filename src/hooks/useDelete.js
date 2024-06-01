@@ -1,5 +1,6 @@
 
 
+import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
 
@@ -16,9 +17,9 @@ const useDelete = () => {
 	if (pathArray.includes('slider')) {
 		hook = useDeleteSliderMutation;
 	}
-	// else if (pathArray.includes('designation')) {
-	// 	hook = useDeleteDesignationMutation;
-	// }
+	else if (pathArray.includes('category')) {
+		hook = useDeleteCategoryMutation;
+	}
 	
 
 	const [deleteRecord, { isLoading, isError, error, isSuccess }] = hook
@@ -34,6 +35,7 @@ const useDelete = () => {
 		];
 
 	const handleDelete = async (id) => {
+		console.log("hello_id", id);
 		withReactContent(Swal)
 			.fire({
 				title: 'Are you sure?',
