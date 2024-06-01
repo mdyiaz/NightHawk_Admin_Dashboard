@@ -33,6 +33,26 @@ const navMenu = (user_type, type) => [
 				childlink: '/admin/category',
 			},
 
+			{
+				childtitle: 'Sub-Category',
+				childlink: '/admin/sub-category',
+			},
+
+		],
+	},
+
+
+	{
+		title: 'Footer Pages',
+		icon: 'heroicons-outline:users',
+		child: [
+			{
+				childtitle: 'Footer Page',
+				childlink: '/admin/footer-page',
+			},
+
+		
+
 		],
 	},
 

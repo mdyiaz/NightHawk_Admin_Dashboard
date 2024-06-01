@@ -6,6 +6,8 @@ export const apiSlice = createApi({
 	tagTypes: [
 		'Slider',
 		'category',
+		'subCategories',
+		'footerPage'
 
 
 

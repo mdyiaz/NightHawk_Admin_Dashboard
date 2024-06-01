@@ -3,6 +3,12 @@ import Layout from '@/layout/Layout';
 import AddCategory from '@/pages/Category/AddCategory';
 import Category from '@/pages/Category/Category';
 import EditCategory from '@/pages/Category/EditCategory';
+import FooterPage from '@/pages/FooterPage/FooterPage';
+import FooterPageCreate from '@/pages/FooterPage/FooterPageCreate';
+import FooterPageEdit from '@/pages/FooterPage/FooterPageEdit';
+import SubCategory from '@/pages/SubCategory/SubCategory';
+import SubCategoryCreate from '@/pages/SubCategory/SubCategoryCreate';
+import SubCategoryEdit from '@/pages/SubCategory/SubCategoryEdit';
 
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
@@ -111,6 +117,61 @@ const router = createBrowserRouter([
 									{
 										path: 'edit',
 										element: <EditCategory />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'sub-category',
+						children: [
+							{
+								path: '',
+								element: <SubCategory />,
+							},
+							{
+								path: 'new',
+								element: <SubCategoryCreate />,
+							},
+							{
+								path: ':id',
+								children: [
+									// {
+									// 	path: '',
+									// 	element: <SliderView />,
+									// },
+									{
+										path: 'edit',
+										element: <SubCategoryEdit />,
+									},
+								],
+							},
+						],
+					},
+
+
+					{
+						path: 'footer-page',
+						children: [
+							{
+								path: '',
+								element: <FooterPage />,
+							},
+							{
+								path: 'new',
+								element: <FooterPageCreate />,
+							},
+							{
+								path: ':id',
+								children: [
+									// {
+									// 	path: '',
+									// 	element: <SliderView />,
+									// },
+									{
+										path: 'edit',
+										element: <FooterPageEdit />,
 									},
 								],
 							},

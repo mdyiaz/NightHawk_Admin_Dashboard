@@ -1,14 +1,11 @@
-
-
-
 import CustomPaginationTable from '@/components/shared/CustomTable/CustomPaginationTable';
 import SkeletionTable from '@/components/skeleton/Table';
 import envConfig from '@/configs/envConfig';
 import useNoImage from '@/hooks/useNoImage';
-import { useGetCategoriesByPaginationQuery,  } from '@/store/api/app/Category/categoryApiSlice';
+import { useGetFooterPagesByPaginationQuery } from '@/store/api/app/FooterPage/footerPageApiSlice';
 import { useState } from 'react';
 
-const Category = () => {
+const FooterPage = () => {
 	const [paginationPage, setPaginationPage] = useState(1);
 	const [limit, setLimit] = useState(10);
 	const [order, setOrder] = useState('desc');
@@ -16,7 +13,7 @@ const Category = () => {
 	const noImage = useNoImage()
 
 	const { data, isLoading, isError, error, isFetching } =
-	useGetCategoriesByPaginationQuery({
+	useGetFooterPagesByPaginationQuery({
 			page: paginationPage,
 			limit: limit,
 			order: order,
@@ -30,8 +27,8 @@ const Category = () => {
 
 	const COLUMNS = [
 		{
-			Header: 'Category Image',
-			accessor: 'image',
+			Header: ' Image',
+			accessor: 'cover',
 			Cell: (row) => (
 				<img
 					src={`${envConfig.apiUrl}${row?.cell?.value}`}
@@ -45,8 +42,8 @@ const Category = () => {
 			),
 		},
 		{
-			Header: 'Title',
-			accessor: 'name',
+			Header: 'Slug',
+			accessor: 'slug',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 		{
@@ -54,12 +51,18 @@ const Category = () => {
 			accessor: 'short_description',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
+
+        {
+			Header: 'Description',
+			accessor: 'content',
+			Cell: (row) => <span>{row?.cell?.value}</span>,
+		},
 	];
 
 	return (
 		<>
 			<CustomPaginationTable
-				title="Categories"
+				title="Footer Pages"
 				COLUMNS={COLUMNS}
 				data={data?.data}
 				paginationPage={paginationPage}
@@ -71,10 +74,11 @@ const Category = () => {
 				search={search}
 				setSearch={setSearch}
 				defaultStatus={false}
+                isView={false}
 				
 			/>
 		</>
 	);
 };
 
-export default Category;
+export default FooterPage;

@@ -1,6 +1,7 @@
 
 
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
+import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
 
@@ -19,6 +20,9 @@ const useDelete = () => {
 	}
 	else if (pathArray.includes('category')) {
 		hook = useDeleteCategoryMutation;
+	}
+	else if (pathArray.includes('sub-category')) {
+		hook = useDeleteSubCategoryMutation;
 	}
 	
 

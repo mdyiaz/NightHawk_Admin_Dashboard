@@ -1,14 +1,11 @@
-
-
-
 import CustomPaginationTable from '@/components/shared/CustomTable/CustomPaginationTable';
 import SkeletionTable from '@/components/skeleton/Table';
 import envConfig from '@/configs/envConfig';
 import useNoImage from '@/hooks/useNoImage';
-import { useGetCategoriesByPaginationQuery,  } from '@/store/api/app/Category/categoryApiSlice';
+import { useGetSubCategoriesByPaginationQuery } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { useState } from 'react';
 
-const Category = () => {
+const SubCategory = () => {
 	const [paginationPage, setPaginationPage] = useState(1);
 	const [limit, setLimit] = useState(10);
 	const [order, setOrder] = useState('desc');
@@ -16,7 +13,7 @@ const Category = () => {
 	const noImage = useNoImage()
 
 	const { data, isLoading, isError, error, isFetching } =
-	useGetCategoriesByPaginationQuery({
+	useGetSubCategoriesByPaginationQuery({
 			page: paginationPage,
 			limit: limit,
 			order: order,
@@ -30,12 +27,12 @@ const Category = () => {
 
 	const COLUMNS = [
 		{
-			Header: 'Category Image',
+			Header: 'Sub-Category Image',
 			accessor: 'image',
 			Cell: (row) => (
 				<img
 					src={`${envConfig.apiUrl}${row?.cell?.value}`}
-					alt="slider"
+					alt="sub-category"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
                         e.target.onerror = null; // Prevents looping
@@ -45,7 +42,7 @@ const Category = () => {
 			),
 		},
 		{
-			Header: 'Title',
+			Header: 'Name',
 			accessor: 'name',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
@@ -54,12 +51,18 @@ const Category = () => {
 			accessor: 'short_description',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
+
+        {
+			Header: 'Category',
+			accessor: 'category',
+			Cell: (row) => <span>{row?.cell?.value}</span>,
+		},
 	];
 
 	return (
 		<>
 			<CustomPaginationTable
-				title="Categories"
+				title="Sub Categories"
 				COLUMNS={COLUMNS}
 				data={data?.data}
 				paginationPage={paginationPage}
@@ -71,10 +74,11 @@ const Category = () => {
 				search={search}
 				setSearch={setSearch}
 				defaultStatus={false}
+                isView={false}
 				
 			/>
 		</>
 	);
 };
 
-export default Category;
+export default SubCategory;
