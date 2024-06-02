@@ -1,6 +1,7 @@
 
 
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
+import { useDeleteFooterPageMutation } from '@/store/api/app/FooterPage/footerPageApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
@@ -24,6 +25,16 @@ const useDelete = () => {
 	else if (pathArray.includes('sub-category')) {
 		hook = useDeleteSubCategoryMutation;
 	}
+
+	else if (pathArray.includes('footer-page')) {
+		hook = useDeleteFooterPageMutation;
+	}
+
+	else if (pathArray.includes('slider')) {
+		hook = useDeleteSliderMutation;
+	}
+
+	
 	
 
 	const [deleteRecord, { isLoading, isError, error, isSuccess }] = hook

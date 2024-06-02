@@ -35,20 +35,37 @@ const Slider = () => {
 					alt="slider"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
-                        e.target.onerror = null; // Prevents looping
-                        e.target.src = noImage;
-                    }}
+						e.target.onerror = null; // Prevents looping
+						e.target.src = noImage;
+					}}
 				/>
 			),
 		},
+
+		{
+			Header: 'Slider Logo',
+			accessor: 'logo',
+			Cell: (row) => (
+				<img
+					src={`${envConfig.apiUrl}${row?.cell?.value}`}
+					alt="slider"
+					className="h-20 w-auto object-cover rounded-lg"
+					onError={(e) => {
+						e.target.onerror = null; // Prevents looping
+						e.target.src = noImage;
+					}}
+				/>
+			),
+		},
+
 		{
 			Header: 'Title',
-			accessor: 'title',
+			accessor: 'name',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 		{
-			Header: 'Details',
-			accessor: 'details',
+			Header: 'Short Description',
+			accessor: 'short_description',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 	];
@@ -67,6 +84,8 @@ const Slider = () => {
 				setOrder={setOrder}
 				search={search}
 				setSearch={setSearch}
+				isView={false}
+				defaultStatus={false}
 			/>
 		</>
 	);

@@ -13,7 +13,7 @@ const navMenu = (user_type, type) => [
 	},
 
 	{
-		title: 'Website',
+		title: 'Slider',
 		icon: 'mdi:world',
 		child: [
 			{

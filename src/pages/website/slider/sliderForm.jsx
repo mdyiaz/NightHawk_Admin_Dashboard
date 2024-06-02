@@ -30,31 +30,31 @@ const SliderForm = ({ id, data }) => {
 
 	const handleFormSubmit = async (data) => {
 		// Manipulate the data as needed
-		const formData = new FormData();
+		// const formData = new FormData();
 
-		const keys = Object.keys(data);
+		// const keys = Object.keys(data);
 
-		keys.forEach((key) => {
-			if (['image'].includes(key)) {
-				if (data[key]) {
-					formData.append('image', data.image[0]);
-				} else {
-					formData.append('image', data.image);
-				}
-			} else {
-				formData.append(key, data[key]);
-			}
-		});
+		// keys.forEach((key) => {
+		// 	if (['image'].includes(key)) {
+		// 		if (data[key]) {
+		// 			formData.append('image', data.image[0]);
+		// 		} else {
+		// 			formData.append('image', data.image);
+		// 		}
+		// 	} else {
+		// 		formData.append(key, data[key]);
+		// 	}
+		// });
 
-		formData.append('created_admin_id', auth?.user?.user_info?.id);
+		// formData.append('created_admin_id', auth?.user?.user_info?.id);
 
-		await onSubmit(formData);
+		await onSubmit(data);
 	};
 
 	useEffect(() => {
 		reset({
-			title: data?.title,
-			details: data?.details,
+			name: data?.name,
+			short_description: data?.short_description,
 		});
 	}, [data]);
 
@@ -67,20 +67,20 @@ const SliderForm = ({ id, data }) => {
 						label="Title"
 						type="text"
 						placeholder="Slider Title"
-						name="title"
+						name="name"
 						required={true}
-						error={errors?.title}
+						error={errors?.name}
 					/>
 
 					<Textarea
-						name="details"
+						name="short_description"
 						register={register}
-						label="Details"
+						label="Short Description"
 						type="textarea"
-						placeholder="Slider Details"
+						placeholder="Slider short_description"
 						row={6}
 						required={true}
-						error={errors?.details}
+						error={errors?.short_description}
 					/>
 
 					<Fileinput
@@ -90,6 +90,16 @@ const SliderForm = ({ id, data }) => {
 						preview={true}
 						control={control}
 					/>
+
+					<Fileinput
+						selectedFile={watch('logo')?.[0]}
+						name={'logo'}
+						defaultUrl={data?.logo}
+						preview={true}
+						control={control}
+					/>
+
+
 				</div>
 
 				<div className="ltr:text-right rtl:text-left space-x-3 rtl:space-x-reverse mt-6">

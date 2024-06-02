@@ -1,4 +1,5 @@
 import SelectCategory from '@/components/shared/Select/SelectCategory';
+import TextEditor from '@/components/shared/Select/TextEditor';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
@@ -37,9 +38,9 @@ const FooterPageForm = ({ id, data }) => {
 
     useEffect(() => {
         reset({
-            name: data?.name,
+            title: data?.title,
             short_description: data?.short_description,
-            category: data?.category
+            content: data?.content
         });
     }, [data]);
 
@@ -47,6 +48,18 @@ const FooterPageForm = ({ id, data }) => {
         <form onSubmit={handleSubmit(handleFormSubmit)}>
             <Card title={id ? 'Edit Footer Page' : 'Create New Footer Page'}>
                 <div className="grid grid-cols-1 gap-5">
+
+                    <Textinput
+                        register={register}
+                        label="Title"
+                        type="text"
+                        placeholder="Title"
+                        name="title"
+                        required={true}
+                        error={errors?.title}
+                    />
+
+                    {/* 
                     <Textinput
                         register={register}
                         label="Slug"
@@ -54,8 +67,8 @@ const FooterPageForm = ({ id, data }) => {
                         placeholder="Slug"
                         name="slug"
                         required={true}
-                        error={errors?.name}
-                    />
+                        error={errors?.slug}
+                    /> */}
 
                     <Textarea
                         name="short_description"
@@ -74,6 +87,13 @@ const FooterPageForm = ({ id, data }) => {
                         defaultUrl={data?.cover}
                         preview={true}
                         control={control}
+                    />
+
+                    <TextEditor
+                        name="content"
+                        errors={errors}
+                        control={control}
+                        required={false}
                     />
                 </div>
 

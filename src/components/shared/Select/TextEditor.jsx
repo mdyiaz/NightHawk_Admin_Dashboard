@@ -14,7 +14,8 @@ const TextEditor = ({ name, control, errors, required }) => {
 			formData.append('src', blobInfo.blob(), blobInfo.filename());
 
 			const { data } = await axios.post(
-				'https://api.isle.com.bd/api/upload',
+				// 'https://api.isle.com.bd/api/upload',
+				'',
 				formData
 			);
 

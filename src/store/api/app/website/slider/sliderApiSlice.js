@@ -3,54 +3,47 @@ import { apiSlice } from '@/store/api/apiSlice';
 export const sliderApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getSliders: builder.query({
-			query: () => 'slider',
-			providesTags: ['Slider'],
+			query: () => 'sliders',
+			providesTags: ['slider'],
 		}),
 
 		getSlidersByPagination: builder.query({
 			query: ({ page = 1, limit = 10, order = 'desc', search = '' }) =>
-				`slider/pages?page=${page}&limit=${limit}&order=${order}&search=${search}`,
-			providesTags: ['Slider'],
+				`sliders/pages?page=${page}&limit=${limit}&order=${order}&search=${search}`,
+			providesTags: ['slider'],
 		}),
 
 		getSliderById: builder.query({
-			query: (id) => `slider/${id}`,
-			providesTags: ['Slider'],
+			query: (id) => `sliders/${id}`,
+			providesTags: ['slider'],
 		}),
 
 		createSlider: builder.mutation({
 			query: (data) => ({
-				url: 'slider',
+				url: 'sliders',
 				method: 'POST',
 				body: data,
 			}),
-			invalidatesTags: ['Slider'],
+			invalidatesTags: ['slider'],
 		}),
 
 		updateSlider: builder.mutation({
 			query: ({ id, data }) => ({
-				url: `slider/${id}`,
+				url: `sliders/${id}`,
 				method: 'PUT',
 				body: data,
 			}),
-			invalidatesTags: ['Slider'],
+			invalidatesTags: ['slider'],
 		}),
 
-		updateSliderStatus: builder.mutation({
-			query: ({ id, status }) => ({
-				url: `slider/${id}/status?status=${status}`,
-				method: 'PUT',
-				body: { status },
-			}),
-			invalidatesTags: ['Slider'],
-		}),
+		
 
 		deleteSlider: builder.mutation({
 			query: (id) => ({
-				url: `slider/${id}`,
+				url: `sliders/${id}`,
 				method: 'DELETE',
 			}),
-			invalidatesTags: ['Slider'],
+			invalidatesTags: ['slider'],
 		}),
 	}),
 });
@@ -61,6 +54,5 @@ export const {
 	useGetSliderByIdQuery,
 	useCreateSliderMutation,
 	useUpdateSliderMutation,
-	useUpdateSliderStatusMutation,
 	useDeleteSliderMutation,
 } = sliderApi;

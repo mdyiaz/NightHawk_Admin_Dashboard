@@ -44,3 +44,5 @@ README.txt
 
 # typescript
 *.tsbuildinfo
+
+/public/*

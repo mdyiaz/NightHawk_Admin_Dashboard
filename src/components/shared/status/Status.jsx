@@ -1,6 +1,5 @@
 
 
-import { useUpdateSliderStatusMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
 
 import { useLocation } from 'react-router-dom';
@@ -12,9 +11,9 @@ const Status = ({ id, status }) => {
 
 	let hook = null;
 
-	if (pathArray.includes('slider')) {
-		hook = useUpdateSliderStatusMutation;
-	} 
+	// if (pathArray.includes('slider')) {
+	// 	hook = useUpdateSliderStatusMutation;
+	// } 
 	// else if (pathArray.includes('designation')) {
 	// 	hook = useUpdateDesignationStatusMutation;
 	// } 

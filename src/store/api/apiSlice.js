@@ -7,7 +7,8 @@ export const apiSlice = createApi({
 		'Slider',
 		'category',
 		'subCategories',
-		'footerPage'
+		'footerPage',
+		'slider'
 
 
 

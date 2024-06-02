@@ -42,8 +42,8 @@ const FooterPage = () => {
 			),
 		},
 		{
-			Header: 'Slug',
-			accessor: 'slug',
+			Header: 'Title',
+			accessor: 'title',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 		{
@@ -52,11 +52,11 @@ const FooterPage = () => {
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 
-        {
-			Header: 'Description',
-			accessor: 'content',
-			Cell: (row) => <span>{row?.cell?.value}</span>,
-		},
+        // {
+		// 	Header: 'Description',
+		// 	accessor: 'content',
+		// 	Cell: (row) => <span>{row?.cell?.value}</span>,
+		// },
 	];
 
 	return (
