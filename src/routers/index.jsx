@@ -1,11 +1,15 @@
 import AuthLayout from '@/layout/AuthLayout';
 import Layout from '@/layout/Layout';
+import Assets from '@/pages/Assets/Assets';
+import AssetsCreate from '@/pages/Assets/AssetsCreate';
+import AssetsEdit from '@/pages/Assets/AssetsEdit';
 import AddCategory from '@/pages/Category/AddCategory';
 import Category from '@/pages/Category/Category';
 import EditCategory from '@/pages/Category/EditCategory';
 import FooterPage from '@/pages/FooterPage/FooterPage';
 import FooterPageCreate from '@/pages/FooterPage/FooterPageCreate';
 import FooterPageEdit from '@/pages/FooterPage/FooterPageEdit';
+import GeneralAbout from '@/pages/GeneralAbout/GeneralAbout';
 import SubCategory from '@/pages/SubCategory/SubCategory';
 import SubCategoryCreate from '@/pages/SubCategory/SubCategoryCreate';
 import SubCategoryEdit from '@/pages/SubCategory/SubCategoryEdit';
@@ -147,6 +151,46 @@ const router = createBrowserRouter([
 									},
 								],
 							},
+						],
+					},
+
+
+					{
+						path: 'assets',
+						children: [
+							{
+								path: '',
+								element: <Assets />,
+							},
+							{
+								path: 'new',
+								element: <AssetsCreate />,
+							},
+							{
+								path: ':id',
+								children: [
+									// {
+									// 	path: '',
+									// 	element: <SliderView />,
+									// },
+									{
+										path: 'edit',
+										element: <AssetsEdit />,
+									},
+								],
+							},
+						],
+					},
+
+
+					{
+						path: 'general-about-us',
+						children: [
+							{
+								path: '',
+								element: <GeneralAbout />,
+							},
+							
 						],
 					},
 

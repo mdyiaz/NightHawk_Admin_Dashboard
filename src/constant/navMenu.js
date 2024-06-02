@@ -38,6 +38,26 @@ const navMenu = (user_type, type) => [
 				childlink: '/admin/sub-category',
 			},
 
+			{
+				childtitle: 'Assets',
+				childlink: '/admin/assets',
+			},
+
+		],
+	},
+
+
+	{
+		title: 'General About Us',
+		icon: 'heroicons-outline:users',
+		child: [
+			{
+				childtitle: 'General About Us',
+				childlink: '/admin/general-about-us',
+			},
+
+		
+
 		],
 	},
 

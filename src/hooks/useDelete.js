@@ -1,5 +1,6 @@
 
 
+import { useDeleteAssetsMutation } from '@/store/api/app/Assets/assetsApiSlice';
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
 import { useDeleteFooterPageMutation } from '@/store/api/app/FooterPage/footerPageApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
@@ -32,6 +33,10 @@ const useDelete = () => {
 
 	else if (pathArray.includes('slider')) {
 		hook = useDeleteSliderMutation;
+	}
+
+	else if (pathArray.includes('assets')) {
+		hook = useDeleteAssetsMutation;
 	}
 
 	

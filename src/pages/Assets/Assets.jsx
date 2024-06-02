@@ -2,10 +2,11 @@ import CustomPaginationTable from '@/components/shared/CustomTable/CustomPaginat
 import SkeletionTable from '@/components/skeleton/Table';
 import envConfig from '@/configs/envConfig';
 import useNoImage from '@/hooks/useNoImage';
-import { useGetSubCategoriesByPaginationQuery } from '@/store/api/app/SubCategory/subCategoryApiSlice';
+import { useGetAssetsByPaginationQuery } from '@/store/api/app/Assets/assetsApiSlice';
+import { useGetCategoriesByPaginationQuery,  } from '@/store/api/app/Category/categoryApiSlice';
 import { useState } from 'react';
 
-const SubCategory = () => {
+const Assets = () => {
 	const [paginationPage, setPaginationPage] = useState(1);
 	const [limit, setLimit] = useState(10);
 	const [order, setOrder] = useState('desc');
@@ -13,7 +14,7 @@ const SubCategory = () => {
 	const noImage = useNoImage()
 
 	const { data, isLoading, isError, error, isFetching } =
-	useGetSubCategoriesByPaginationQuery({
+	useGetAssetsByPaginationQuery({
 			page: paginationPage,
 			limit: limit,
 			order: order,
@@ -27,12 +28,12 @@ const SubCategory = () => {
 
 	const COLUMNS = [
 		{
-			Header: 'Sub-Category Image',
-			accessor: 'image',
+			Header: 'Asset Cover',
+			accessor: 'cover',
 			Cell: (row) => (
 				<img
 					src={`${envConfig.apiUrl}${row?.cell?.value}`}
-					alt="sub-category"
+					alt="slider"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
                         e.target.onerror = null; // Prevents looping
@@ -47,14 +48,13 @@ const SubCategory = () => {
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 		{
-			Header: 'Short Description',
-			accessor: 'short_description',
+			Header: 'Size',
+			accessor: 'size',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
-
         {
-			Header: 'Category',
-			accessor: 'category.name',
+			Header: 'Resolution',
+			accessor: 'resolution',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
 	];
@@ -62,7 +62,7 @@ const SubCategory = () => {
 	return (
 		<>
 			<CustomPaginationTable
-				title="Sub Categories"
+				title="Assets"
 				COLUMNS={COLUMNS}
 				data={data?.data}
 				paginationPage={paginationPage}
@@ -81,4 +81,4 @@ const SubCategory = () => {
 	);
 };
 
-export default SubCategory;
+export default Assets;
