@@ -70,29 +70,39 @@ const navMenu = (user_type, type) => [
 				childtitle: 'Footer Page',
 				childlink: '/admin/footer-page',
 			},
-
-		
-
 		],
 	},
-
-
 
 
 	{
-		title: 'Setting',
-		icon: 'mdi:computer',
+		title: 'Application Settings',
+		icon: 'heroicons-outline:users',
 		child: [
 			{
-				childtitle: 'Admin User',
-				childlink: '/admin/admin',
-			},
-			{
-				childtitle: 'Application',
-				childlink: '/admin/application',
+				childtitle: 'Application Settings',
+				childlink: '/admin/application-settings',
 			},
 		],
 	},
+
+
+
+	// {
+	// 	title: 'Setting',
+	// 	icon: 'mdi:computer',
+	// 	child: [
+	// 		{
+	// 			childtitle: 'Admin User',
+	// 			childlink: '/admin/admin',
+	// 		},
+	// 		{
+	// 			childtitle: 'Application',
+	// 			childlink: '/admin/application',
+	// 		},
+	// 	],
+	// },
+
+
 ];
 
 export default navMenu;

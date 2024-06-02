@@ -1,5 +1,6 @@
 import AuthLayout from '@/layout/AuthLayout';
 import Layout from '@/layout/Layout';
+import ApplicationSettings from '@/pages/ApplicationSettings/ApplicationSettings';
 import Assets from '@/pages/Assets/Assets';
 import AssetsCreate from '@/pages/Assets/AssetsCreate';
 import AssetsEdit from '@/pages/Assets/AssetsEdit';
@@ -219,6 +220,17 @@ const router = createBrowserRouter([
 									},
 								],
 							},
+						],
+					},
+
+					{
+						path: 'application-settings',
+						children: [
+							{
+								path: '',
+								element: <ApplicationSettings />,
+							},
+							
 						],
 					},
 

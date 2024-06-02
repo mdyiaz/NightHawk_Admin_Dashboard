@@ -10,7 +10,8 @@ export const apiSlice = createApi({
 		'footerPage',
 		'slider',
 		'assets',
-		'general-about-us'
+		'general-about-us',
+		'application-settings'
 
 
 

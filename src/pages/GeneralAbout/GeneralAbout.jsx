@@ -70,7 +70,7 @@ const GeneralAbout = ({ id,  }) => {
                         register={register}
                         label="Short Description"
                         type="textarea"
-                        placeholder="Sub-Category short_description"
+                        placeholder="short_description"
                         row={6}
                         required={true}
                         error={errors?.short_description}
