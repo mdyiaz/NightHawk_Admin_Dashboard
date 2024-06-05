@@ -11,7 +11,8 @@ export const apiSlice = createApi({
 		'slider',
 		'assets',
 		'general-about-us',
-		'application-settings'
+		'application-settings',
+		'social'
 
 
 

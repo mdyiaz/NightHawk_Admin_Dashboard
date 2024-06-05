@@ -3,6 +3,7 @@
 import { useDeleteAssetsMutation } from '@/store/api/app/Assets/assetsApiSlice';
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
 import { useDeleteFooterPageMutation } from '@/store/api/app/FooterPage/footerPageApiSlice';
+import { useDeleteSocialMutation } from '@/store/api/app/Social/socialApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
@@ -37,6 +38,10 @@ const useDelete = () => {
 
 	else if (pathArray.includes('assets')) {
 		hook = useDeleteAssetsMutation;
+	}
+
+	else if (pathArray.includes('social')) {
+		hook = useDeleteSocialMutation;
 	}
 
 	

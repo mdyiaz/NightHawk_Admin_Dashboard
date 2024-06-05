@@ -73,6 +73,18 @@ const navMenu = (user_type, type) => [
 		],
 	},
 
+	{
+		title: 'Social',
+		icon: 'heroicons-outline:users',
+		child: [
+			{
+				childtitle: 'Social',
+				childlink: '/admin/social',
+			},
+
+		],
+	},
+
 
 	{
 		title: 'Application Settings',

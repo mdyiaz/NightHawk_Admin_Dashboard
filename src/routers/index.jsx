@@ -11,6 +11,9 @@ import FooterPage from '@/pages/FooterPage/FooterPage';
 import FooterPageCreate from '@/pages/FooterPage/FooterPageCreate';
 import FooterPageEdit from '@/pages/FooterPage/FooterPageEdit';
 import GeneralAbout from '@/pages/GeneralAbout/GeneralAbout';
+import Social from '@/pages/Social/Social';
+import SocialCreate from '@/pages/Social/SocialCreate';
+import SocialEdit from '@/pages/Social/SocialEdit';
 import SubCategory from '@/pages/SubCategory/SubCategory';
 import SubCategoryCreate from '@/pages/SubCategory/SubCategoryCreate';
 import SubCategoryEdit from '@/pages/SubCategory/SubCategoryEdit';
@@ -177,6 +180,33 @@ const router = createBrowserRouter([
 									{
 										path: 'edit',
 										element: <AssetsEdit />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'social',
+						children: [
+							{
+								path: '',
+								element: <Social />,
+							},
+							{
+								path: 'new',
+								element: <SocialCreate />,
+							},
+							{
+								path: ':id',
+								children: [
+									// {
+									// 	path: '',
+									// 	element: <SliderView />,
+									// },
+									{
+										path: 'edit',
+										element: <SocialEdit />,
 									},
 								],
 							},
