@@ -29,26 +29,26 @@ const SliderForm = ({ id, data }) => {
 	} = useSubmit(id, id ? useUpdateSliderMutation : useCreateSliderMutation);
 
 	const handleFormSubmit = async (data) => {
-		// Manipulate the data as needed
-		// const formData = new FormData();
+		const formData = new FormData();
 
-		// const keys = Object.keys(data);
-
-		// keys.forEach((key) => {
-		// 	if (['image'].includes(key)) {
-		// 		if (data[key]) {
-		// 			formData.append('image', data.image[0]);
-		// 		} else {
-		// 			formData.append('image', data.image);
-		// 		}
-		// 	} else {
-		// 		formData.append(key, data[key]);
-		// 	}
-		// });
-
-		// formData.append('created_admin_id', auth?.user?.user_info?.id);
-
-		await onSubmit(data);
+		const keys = Object.keys(data);
+	
+		keys.forEach((key) => {
+			if (['image', 'logo'].includes(key)) {
+				if (Array.isArray(data[key])) {
+					data[key].forEach((file) => {
+						formData.append(key, file);
+					});
+				} else if (data[key]) {
+					formData.append(key, data[key]);
+				}
+			} else {
+				formData.append(key, data[key]);
+			}
+		});
+	
+		
+		await onSubmit(formData);
 	};
 
 	useEffect(() => {

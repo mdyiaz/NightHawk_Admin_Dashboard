@@ -81,13 +81,13 @@ const FooterPageForm = ({ id, data }) => {
                         error={errors?.short_description}
                     />
 
-                    <Fileinput
+                    {/* <Fileinput
                         selectedFile={watch('cover')?.[0]}
                         name={'cover'}
                         defaultUrl={data?.cover}
                         preview={true}
                         control={control}
-                    />
+                    /> */}
 
                     <TextEditor
                         name="content"

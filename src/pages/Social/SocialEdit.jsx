@@ -1,8 +1,8 @@
 import React from 'react';
-import SocialCreate from './SocialCreate';
 import { useParams } from 'react-router-dom';
 import { useGetSocialByIdQuery } from '@/store/api/app/Social/socialApiSlice';
 import SkeletionTable from '@/components/skeleton/Table';
+import SocialForm from './SocialForm';
 
 const SocialEdit = () => {
     const {id} = useParams()
@@ -15,7 +15,7 @@ const SocialEdit = () => {
 
     return (
         <div>
-            <SocialCreate  data={data?.data}  id={id} />
+            <SocialForm  data={data?.data}  id={id} />
         </div>
     );
 };

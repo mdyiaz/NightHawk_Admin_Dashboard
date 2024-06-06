@@ -30,26 +30,24 @@ const SocialForm = ({ id, data }) => {
     } = useSubmit(id, id ? useUpdateSocialMutation : useCreateSocialMutation);
 
     const handleFormSubmit = async (data) => {
-        // Manipulate the data as needed
-        // const formData = new FormData();
+     // Manipulate the data as needed
+		const formData = new FormData();
 
-        // const keys = Object.keys(data);
+		const keys = Object.keys(data);
 
-        // keys.forEach((key) => {
-        // 	if (['image'].includes(key)) {
-        // 		if (data[key]) {
-        // 			formData.append('image', data.image[0]);
-        // 		} else {
-        // 			formData.append('image', data.image);
-        // 		}
-        // 	} else {
-        // 		formData.append(key, data[key]);
-        // 	}
-        // });
+		keys.forEach((key) => {
+			if (['icon'].includes(key)) {
+				if (data[key]) {
+					formData.append('icon', data.icon[0]);
+				} else {
+					formData.append('icon', data.icon);
+				}
+			} else {
+				formData.append(key, data[key]);
+			}
+		});
 
-        // formData.append('created_admin_id', auth?.user?.user_info?.id);
-
-        await onSubmit(data);
+		await onSubmit(formData);
     };
 
     useEffect(() => {

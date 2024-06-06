@@ -30,7 +30,24 @@ const CategoryForm = ({ id, data }) => {
 
 	const handleFormSubmit = async (data) => {
 
-		await onSubmit(data);
+		// Manipulate the data as needed
+		const formData = new FormData();
+
+		const keys = Object.keys(data);
+
+		keys.forEach((key) => {
+			if (['image'].includes(key)) {
+				if (data[key]) {
+					formData.append('image', data.image[0]);
+				} else {
+					formData.append('image', data.image);
+				}
+			} else {
+				formData.append(key, data[key]);
+			}
+		});
+
+		await onSubmit(formData);
 	};
 
 	useEffect(() => {
