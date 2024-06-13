@@ -56,7 +56,7 @@ const SubCategoryForm = ({ id, data }) => {
         reset({
             name: data?.name,
             short_description: data?.short_description,
-            category: data?.category
+            category_id: data?.category_id
         });
     }, [data]);
 
@@ -80,7 +80,7 @@ const SubCategoryForm = ({ id, data }) => {
                             <SelectCategory
                                 control={control}
                                 errors={errors}
-                                defaultValue={data?.category}
+                                defaultValue={data?.category_id}
                             />
                         </div>
                     </div>

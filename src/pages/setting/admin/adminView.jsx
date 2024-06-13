@@ -1,6 +1,5 @@
 import Loading from '@/components/Loading';
 import PageView from '@/components/shared/PageView/PageView';
-// import { useGetPageContentByIdQuery } from '@/store/api/app/website/pageContent/pageContentApiSlice';
 import { useParams } from 'react-router-dom';
 
 const AdminView = () => {

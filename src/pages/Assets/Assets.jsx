@@ -3,7 +3,6 @@ import SkeletionTable from '@/components/skeleton/Table';
 import envConfig from '@/configs/envConfig';
 import useNoImage from '@/hooks/useNoImage';
 import { useGetAssetsByPaginationQuery } from '@/store/api/app/Assets/assetsApiSlice';
-import { useGetCategoriesByPaginationQuery,  } from '@/store/api/app/Category/categoryApiSlice';
 import { useState } from 'react';
 
 const Assets = () => {
@@ -11,10 +10,10 @@ const Assets = () => {
 	const [limit, setLimit] = useState(10);
 	const [order, setOrder] = useState('desc');
 	const [search, setSearch] = useState('');
-	const noImage = useNoImage()
+	const noImage = useNoImage();
 
 	const { data, isLoading, isError, error, isFetching } =
-	useGetAssetsByPaginationQuery({
+		useGetAssetsByPaginationQuery({
 			page: paginationPage,
 			limit: limit,
 			order: order,
@@ -36,9 +35,9 @@ const Assets = () => {
 					alt="slider"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
-                        e.target.onerror = null; // Prevents looping
-                        e.target.src = noImage;
-                    }}
+						e.target.onerror = null; // Prevents looping
+						e.target.src = noImage;
+					}}
 				/>
 			),
 		},
@@ -52,7 +51,7 @@ const Assets = () => {
 			accessor: 'size',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
-        {
+		{
 			Header: 'Resolution',
 			accessor: 'resolution',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
@@ -74,8 +73,7 @@ const Assets = () => {
 				search={search}
 				setSearch={setSearch}
 				defaultStatus={false}
-                isView={false}
-				
+				isView={false}
 			/>
 		</>
 	);

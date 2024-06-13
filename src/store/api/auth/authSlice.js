@@ -8,10 +8,10 @@ const token = Cookies.get('token');
 
 const initialStateSchema = {
 	auth: {
-		"_id": "",
+		"id": "",
 		"email": "",
 		"role": {
-			"_id": "",
+			"id": "",
 			"name": "",
 		},
 		"token": ""

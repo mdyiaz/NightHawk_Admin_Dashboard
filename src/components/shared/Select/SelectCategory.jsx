@@ -1,7 +1,7 @@
+import { useGetCategoriesQuery } from '@/store/api/app/Category/categoryApiSlice';
 import { Controller } from 'react-hook-form';
 import ReactSelectError from './ReactSelectError';
 import SelectCustom from './SelectCustom';
-import { useGetCategoriesQuery } from '@/store/api/app/Category/categoryApiSlice';
 
 const SelectCategory = ({
     errors,
@@ -31,7 +31,7 @@ const SelectCategory = ({
     return (
         <>
             <Controller
-                name={name || 'category'}
+                name={name || 'category_id'}
                 control={control}
                 defaultValue={defaultValue}
                 render={({ field: { onChange, onBlur, value, ref } }) => (
