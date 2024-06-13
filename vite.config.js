@@ -4,7 +4,7 @@ import path from "path";
 import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://promisedelivery.softwarezoneltd.com',
+  base: 'https://admin.nighthawkk.com',
   resolve: {
     alias: [
       {

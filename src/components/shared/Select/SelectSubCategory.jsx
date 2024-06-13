@@ -21,7 +21,7 @@ const SelectSubCategory = ({
     const { data, isLoading } = useGetSubCategoriesQuery()
 
     const options = data?.data?.map((item) => ({
-        value: item._id,
+        value: item.id,
         label: item.name,
     }));
 

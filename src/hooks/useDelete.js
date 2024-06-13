@@ -32,9 +32,6 @@ const useDelete = () => {
 		hook = useDeleteFooterPageMutation;
 	}
 
-	else if (pathArray.includes('slider')) {
-		hook = useDeleteSliderMutation;
-	}
 
 	else if (pathArray.includes('assets')) {
 		hook = useDeleteAssetsMutation;

@@ -111,7 +111,7 @@ const CustomPaginationTable = ({
 							accessor: 'status',
 							Cell: (row) => (
 								<Status
-									id={row?.cell?.row?.original?._id}
+									id={row?.cell?.row?.original?.id}
 									status={row?.cell?.value}
 								/>
 							),
@@ -123,7 +123,7 @@ const CustomPaginationTable = ({
 				? [
 						{
 							Header: 'Actions',
-							accessor: '_id',
+							accessor: 'id',
 							Cell: (row) => {
 								return (
 									<div className="flex space-x-3 rtl:space-x-reverse">
