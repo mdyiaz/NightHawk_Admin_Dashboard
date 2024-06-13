@@ -2,11 +2,12 @@ import SelectSubCategory from '@/components/shared/Select/SelectSubCategory';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
+import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
 import useSubmit from '@/hooks/useSubmit';
 import {
-    useCreateAssetsMutation,
-    useUpdateAssetsMutation,
+	useCreateAssetsMutation,
+	useUpdateAssetsMutation,
 } from '@/store/api/app/Assets/assetsApiSlice';
 
 import { useEffect } from 'react';
@@ -74,7 +75,7 @@ const AssetsForm = ({ id, data }) => {
 			size: data?.size,
 			resolution: data?.resolution,
 			short_description: data?.short_description,
-			sub_category: data?.sub_category?._id,
+			sub_category_id: data?.sub_category?.id,
 			images: data?.images || [
 				{
 					id: 1,
@@ -106,7 +107,7 @@ const AssetsForm = ({ id, data }) => {
 							<SelectSubCategory
 								control={control}
 								errors={errors}
-								defaultValue={data?.sub_category?._id}
+								defaultValue={data?.sub_category?.id}
 							/>
 						</div>
 					</div>
@@ -129,6 +130,17 @@ const AssetsForm = ({ id, data }) => {
 						name="resolution"
 						required={true}
 						error={errors?.resolution}
+					/>
+
+					<Textarea
+						name="short_description"
+						register={register}
+						label="Short Description"
+						type="textarea"
+						placeholder="Short Description"
+						row={6}
+						required={true}
+						error={errors?.short_description}
 					/>
 
 					<Fileinput

@@ -1,8 +1,7 @@
+import { useGetSubCategoriesQuery } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { Controller } from 'react-hook-form';
 import ReactSelectError from './ReactSelectError';
 import SelectCustom from './SelectCustom';
-import { useGetCategoriesQuery } from '@/store/api/app/Category/categoryApiSlice';
-import { useGetSubCategoriesQuery } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 
 const SelectSubCategory = ({
     errors,
@@ -21,7 +20,7 @@ const SelectSubCategory = ({
     const { data, isLoading } = useGetSubCategoriesQuery()
 
     const options = data?.data?.map((item) => ({
-        value: item._id,
+        value: item.id,
         label: item.name,
     }));
 
@@ -32,7 +31,7 @@ const SelectSubCategory = ({
     return (
         <>
             <Controller
-                name={name || 'sub_category'}
+                name={name || 'sub_category_id'}
                 control={control}
                 defaultValue={defaultValue}
                 render={({ field: { onChange, onBlur, value, ref } }) => (

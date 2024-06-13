@@ -1,4 +1,3 @@
-import { AiFillFileExcel } from 'react-icons/ai';
 
 import Card from '@/components/ui/Card';
 import Pagination from '@/components/ui/Pagination';
@@ -10,11 +9,11 @@ import useDelete from '@/hooks/useDelete';
 import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  useGlobalFilter,
-  usePagination,
-  useRowSelect,
-  useSortBy,
-  useTable,
+    useGlobalFilter,
+    usePagination,
+    useRowSelect,
+    useSortBy,
+    useTable,
 } from 'react-table';
 
 import Status from '../status/Status';
@@ -111,7 +110,7 @@ const CustomPaginationTable = ({
 							accessor: 'status',
 							Cell: (row) => (
 								<Status
-									id={row?.cell?.row?.original?._id}
+									id={row?.cell?.row?.original?.id}
 									status={row?.cell?.value}
 								/>
 							),
@@ -123,7 +122,7 @@ const CustomPaginationTable = ({
 				? [
 						{
 							Header: 'Actions',
-							accessor: '_id',
+							accessor: 'id',
 							Cell: (row) => {
 								return (
 									<div className="flex space-x-3 rtl:space-x-reverse">

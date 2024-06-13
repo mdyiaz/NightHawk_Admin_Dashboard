@@ -32,22 +32,19 @@ const SliderForm = ({ id, data }) => {
 		const formData = new FormData();
 
 		const keys = Object.keys(data);
-	
+
 		keys.forEach((key) => {
 			if (['image', 'logo'].includes(key)) {
-				if (Array.isArray(data[key])) {
-					data[key].forEach((file) => {
-						formData.append(key, file);
-					});
-				} else if (data[key]) {
+				if (data[key]) {
+					formData.append(key, data[key][0]);
+				} else {
 					formData.append(key, data[key]);
 				}
 			} else {
 				formData.append(key, data[key]);
 			}
 		});
-	
-		
+
 		await onSubmit(formData);
 	};
 
@@ -98,8 +95,6 @@ const SliderForm = ({ id, data }) => {
 						preview={true}
 						control={control}
 					/>
-
-
 				</div>
 
 				<div className="ltr:text-right rtl:text-left space-x-3 rtl:space-x-reverse mt-6">
