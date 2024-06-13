@@ -15,10 +15,22 @@ const Fileinput = ({
 	selectedFiles,
 	control,
 	defaultUrl,
+	classLabel,
+	horizontal,
 }) => {
+	console.log('ddd',selectedFile)
+	
 	return (
 		<div>
-			<div className="filegroup">
+			<label
+				className={`block capitalize ${classLabel}  ${
+					horizontal ? 'flex-0 mr-6 md:w-[100px] w-[60px] break-words' : ''
+				}`}
+			>
+				{label}
+			</label>
+
+			<div className="filegroup mt-2">
 				<label>
 					<Controller
 						name={name}
@@ -93,7 +105,7 @@ const Fileinput = ({
 					{!multiple && preview && !selectedFile && defaultUrl && (
 						<div className="w-[200px] h-[200px] mx-auto mt-6  ">
 							<img
-								src={envConfig.apiUrl + defaultUrl}
+								src={envConfig.apiImgUrl + defaultUrl}
 								className="w-full  h-full block rounded object-contain border p-2  border-slate-200"
 								alt={selectedFile?.name}
 							/>
