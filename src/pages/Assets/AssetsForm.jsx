@@ -74,6 +74,7 @@ const AssetsForm = ({ id, data }) => {
 			name: data?.name,
 			size: data?.size,
 			resolution: data?.resolution,
+			download_link: data?.download_link,
 			short_description: data?.short_description,
 			sub_category_id: data?.sub_category?.id,
 			images: data?.images || [
@@ -152,6 +153,17 @@ const AssetsForm = ({ id, data }) => {
 						control={control}
 					/>
 
+
+					<Textinput
+						register={register}
+						label="Download Link"
+						type="text"
+						placeholder="Download Link"
+						name="download_link"
+						required={true}
+						error={errors?.size}
+					/>
+
 					<div>
 						{fields.map((item, index) => (
 							<Fileinput
@@ -171,9 +183,8 @@ const AssetsForm = ({ id, data }) => {
 						<div className="text-center mt-3 flex gap-3 justify-center">
 							<Button
 								text="Remove Last Image"
-								className={`btn-danger ${
-									data?.images?.length >= fields.length ? 'hidden' : ''
-								}`}
+								className={`btn-danger ${data?.images?.length >= fields.length ? 'hidden' : ''
+									}`}
 								onClick={() => remove(fields.length - 1)}
 							/>
 
