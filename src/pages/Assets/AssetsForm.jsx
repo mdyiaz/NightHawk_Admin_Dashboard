@@ -79,7 +79,7 @@ const AssetsForm = ({ id, data }) => {
 			sub_category_id: data?.sub_category?.id,
 			images: data?.images || [
 				{
-					id: 1,
+					id: null,
 					image: null,
 				},
 			],
