@@ -35,7 +35,7 @@ const AboutPoint = () => {
 			accessor: 'image',
 			Cell: (row) => (
 				<img
-					src={`${envConfig.apiUrl}${row?.cell?.value}`}
+					src={`${envConfig.apiImgUrl}${row?.cell?.value}`}
 					alt="about point"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {

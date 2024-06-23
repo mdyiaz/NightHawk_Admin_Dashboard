@@ -42,7 +42,7 @@ const SocialLink = () => {
 			accessor: 'icon',
 			Cell: (row) => (
 				<img
-					src={`${envConfig.apiUrl}${row?.cell?.value}`}
+					src={`${envConfig.apiImgUrl}${row?.cell?.value}`}
 					alt="icon"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {

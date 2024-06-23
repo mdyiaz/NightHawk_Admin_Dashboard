@@ -31,7 +31,7 @@ const Slider = () => {
 			accessor: 'image',
 			Cell: (row) => (
 				<img
-					src={`${envConfig.apiUrl}${row?.cell?.value}`}
+					src={`${envConfig.apiImgUrl}${row?.cell?.value}`}
 					alt="slider"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
@@ -47,7 +47,7 @@ const Slider = () => {
 			accessor: 'logo',
 			Cell: (row) => (
 				<img
-					src={`${envConfig.apiUrl}${row?.cell?.value}`}
+					src={`${envConfig.apiImgUrl}${row?.cell?.value}`}
 					alt="slider"
 					className="h-20 w-auto object-cover rounded-lg"
 					onError={(e) => {
