@@ -6,8 +6,8 @@ import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
 import useSubmit from '@/hooks/useSubmit';
 import {
-    useCreateGeneralAboutUsMutation,
-    useGetGeneralAboutUsQuery,
+	useCreateGeneralAboutUsMutation,
+	useGetGeneralAboutUsQuery,
 } from '@/store/api/app/GeneralAbout/generalAboutApiSlice';
 
 import { useEffect } from 'react';
@@ -90,6 +90,16 @@ const GeneralAbout = ({ id }) => {
 						row={6}
 						required={true}
 						error={errors?.short_description}
+					/>
+
+					<Textinput
+						register={register}
+						label="Name"
+						type="text"
+						placeholder="Name"
+						name="name"
+						required={false}
+						error={errors?.name}
 					/>
 
 					<Fileinput
