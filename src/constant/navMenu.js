@@ -55,9 +55,6 @@ const navMenu = (user_type, type) => [
 				childtitle: 'General About Us',
 				childlink: '/admin/general-about-us',
 			},
-
-		
-
 		],
 	},
 
@@ -93,6 +90,17 @@ const navMenu = (user_type, type) => [
 			{
 				childtitle: 'Application Settings',
 				childlink: '/admin/application-settings',
+			},
+		],
+	},
+
+	{
+		title: 'SEO Analytics',
+		icon: 'heroicons-outline:users',
+		child: [
+			{
+				childtitle: 'SEO Analytics',
+				childlink: 'https://www.semrush.com/projects/18255438/',
 			},
 		],
 	},
