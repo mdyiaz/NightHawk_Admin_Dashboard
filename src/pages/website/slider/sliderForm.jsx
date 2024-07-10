@@ -3,6 +3,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import {
 	useCreateSliderMutation,
@@ -83,7 +84,8 @@ const SliderForm = ({ id, data }) => {
 					<Fileinput
 						selectedFile={watch('image')?.[0]}
 						name={'image'}
-						defaultUrl={data?.image}
+						defaultUrl={envConfig.apiImgUrl + data?.image}
+
 						preview={true}
 						control={control}
 					/>
@@ -91,7 +93,8 @@ const SliderForm = ({ id, data }) => {
 					<Fileinput
 						selectedFile={watch('logo')?.[0]}
 						name={'logo'}
-						defaultUrl={data?.logo}
+						defaultUrl={envConfig.apiImgUrl + data?.logo}
+
 						preview={true}
 						control={control}
 					/>

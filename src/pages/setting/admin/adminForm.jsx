@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import { useCreateAdminUserMutation, useUpdateAdminUserMutation } from '@/store/api/app/setting/admin/adminApiSlice';
 import { useEffect } from 'react';
@@ -112,7 +113,7 @@ const AdminForm = ({ id, data }) => {
 					<Fileinput
 						selectedFile={watch('photo')?.[0]}
 						name={'photo'}
-						defaultUrl={data?.photo}
+						defaultUrl={envConfig.apiImgUrl + data?.photo}
 						preview={true}
 						control={control}
 					/>

@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import {
 	useCreateGeneralAboutUsMutation,
@@ -105,7 +106,7 @@ const GeneralAbout = ({ id }) => {
 					<Fileinput
 						selectedFile={watch('cover')?.[0]}
 						name={'cover'}
-						defaultUrl={data?.image}
+						defaultUrl={envConfig.apiImgUrl + data?.image}
 						preview={true}
 						control={control}
 					/>

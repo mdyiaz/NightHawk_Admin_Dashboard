@@ -3,6 +3,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import { useCreateApplicationMutation } from '@/store/api/app/setting/application/applicationApiSlice';
 import { useEffect } from 'react';
@@ -120,7 +121,8 @@ const ApplicationForm = ({ data }) => {
 					<Fileinput
 						selectedFile={watch('logo')?.[0]}
 						name={'logo'}
-						defaultUrl={data?.logo}
+						defaultUrl={envConfig.apiImgUrl + data?.logo}
+
 						preview={true}
 						placeholder='LOGO'
 						control={control}
@@ -130,7 +132,8 @@ const ApplicationForm = ({ data }) => {
 					<Fileinput
 						selectedFile={watch('photo')?.[0]}
 						name={'photo'}
-						defaultUrl={data?.photo}
+						defaultUrl={envConfig.apiImgUrl + data?.photo}
+
 						preview={true}
 						placeholder='Footer Logo'
 						control={control}

@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import {
 	useCreateAssetsMutation,
@@ -148,7 +149,7 @@ const AssetsForm = ({ id, data }) => {
 						selectedFile={watch('cover')?.[0]}
 						name={'cover'}
 						label="Cover Image"
-						defaultUrl={data?.cover}
+						defaultUrl={envConfig.apiImgUrl + data?.cover}
 						preview={true}
 						control={control}
 					/>
@@ -174,7 +175,8 @@ const AssetsForm = ({ id, data }) => {
 								}
 								name={`images[${index}].image`}
 								label={`Asset Image ${index + 1}`}
-								defaultUrl={data?.images?.[index]?.image}
+								defaultUrl={envConfig.apiImgUrl + data?.images?.[index]?.image}
+
 								preview={true}
 								control={control}
 								classLabel={'mt-2'}

@@ -3,6 +3,7 @@ import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
 import Textarea from '@/components/ui/Textarea';
 import Textinput from '@/components/ui/Textinput';
+import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import {
     useCreateApplicationSettingsMutation,
@@ -112,7 +113,7 @@ const ApplicationSettings = ({ id }) => {
 									: null
 							}
 							name={'site_logo'}
-							defaultUrl={data?.site_logo}
+							defaultUrl={envConfig.apiImgUrl + data?.site_logo}
 							preview={true}
 							control={control}
 						/>
