@@ -106,7 +106,7 @@ const GeneralAbout = ({ id }) => {
 					<Fileinput
 						selectedFile={watch('cover')?.[0]}
 						name={'cover'}
-						defaultUrl={envConfig.apiImgUrl + data?.image}
+						defaultUrl={data?.image}
 						preview={true}
 						control={control}
 					/>

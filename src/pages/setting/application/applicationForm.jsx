@@ -121,7 +121,7 @@ const ApplicationForm = ({ data }) => {
 					<Fileinput
 						selectedFile={watch('logo')?.[0]}
 						name={'logo'}
-						defaultUrl={envConfig.apiImgUrl + data?.logo}
+						defaultUrl={data?.logo}
 
 						preview={true}
 						placeholder='LOGO'
@@ -132,7 +132,7 @@ const ApplicationForm = ({ data }) => {
 					<Fileinput
 						selectedFile={watch('photo')?.[0]}
 						name={'photo'}
-						defaultUrl={envConfig.apiImgUrl + data?.photo}
+						defaultUrl={data?.photo}
 
 						preview={true}
 						placeholder='Footer Logo'

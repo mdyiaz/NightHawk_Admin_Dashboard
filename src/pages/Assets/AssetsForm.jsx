@@ -149,7 +149,7 @@ const AssetsForm = ({ id, data }) => {
 						selectedFile={watch('cover')?.[0]}
 						name={'cover'}
 						label="Cover Image"
-						defaultUrl={envConfig.apiImgUrl + data?.cover}
+						defaultUrl={data?.cover}
 						preview={true}
 						control={control}
 					/>
@@ -175,7 +175,7 @@ const AssetsForm = ({ id, data }) => {
 								}
 								name={`images[${index}].image`}
 								label={`Asset Image ${index + 1}`}
-								defaultUrl={envConfig.apiImgUrl + data?.images?.[index]?.image}
+								defaultUrl={data?.images?.[index]?.image}
 
 								preview={true}
 								control={control}

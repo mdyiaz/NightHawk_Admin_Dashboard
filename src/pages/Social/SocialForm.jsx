@@ -87,7 +87,7 @@ const SocialForm = ({ id, data }) => {
                     <Fileinput
                         selectedFile={watch('icon')?.[0]}
                         name={'icon'}
-						defaultUrl={envConfig.apiImgUrl + data?.icon}
+						defaultUrl={data?.icon}
 
                         preview={true}
                         control={control}

@@ -100,7 +100,7 @@ const SubCategoryForm = ({ id, data }) => {
                     <Fileinput
                         selectedFile={watch('image')?.[0]}
                         name={'image'}
-						defaultUrl={envConfig.apiImgUrl + data?.image}
+						defaultUrl={data?.image}
 
                         preview={true}
                         control={control}

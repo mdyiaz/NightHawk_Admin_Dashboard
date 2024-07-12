@@ -113,7 +113,7 @@ const ApplicationSettings = ({ id }) => {
 									: null
 							}
 							name={'site_logo'}
-							defaultUrl={envConfig.apiImgUrl + data?.site_logo}
+							defaultUrl={data?.site_logo}
 							preview={true}
 							control={control}
 						/>

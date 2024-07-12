@@ -84,7 +84,7 @@ const SliderForm = ({ id, data }) => {
 					<Fileinput
 						selectedFile={watch('image')?.[0]}
 						name={'image'}
-						defaultUrl={envConfig.apiImgUrl + data?.image}
+						defaultUrl={data?.image}
 
 						preview={true}
 						control={control}
@@ -93,7 +93,7 @@ const SliderForm = ({ id, data }) => {
 					<Fileinput
 						selectedFile={watch('logo')?.[0]}
 						name={'logo'}
-						defaultUrl={envConfig.apiImgUrl + data?.logo}
+						defaultUrl={data?.logo}
 
 						preview={true}
 						control={control}
