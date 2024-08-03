@@ -1,3 +1,4 @@
+import TextEditor from '@/components/shared/Select/TextEditor';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
@@ -6,8 +7,8 @@ import Textinput from '@/components/ui/Textinput';
 import envConfig from '@/configs/envConfig';
 import useSubmit from '@/hooks/useSubmit';
 import {
-    useCreateApplicationSettingsMutation,
-    useGetApplicationSettingsQuery,
+	useCreateApplicationSettingsMutation,
+	useGetApplicationSettingsQuery,
 } from '@/store/api/app/ApplicationSettings/applicationSettingsApiSlice';
 
 import { useEffect } from 'react';
@@ -89,16 +90,26 @@ const ApplicationSettings = ({ id }) => {
 						error={errors?.site_name}
 					/>
 
-					<Textarea
+					{/* <Textarea
 						name="site_description"
 						register={register}
 						label="Application Description"
 						type="textarea"
-						placeholder=" short_description"
+						placeholder="site_description"
 						row={6}
 						required={true}
 						error={errors?.site_description}
-					/>
+					/> */}
+
+					<div>
+						<p className='mb-2 text-sm font-semibold'>Meta Description</p>
+						<TextEditor
+							name="site_description"
+							errors={errors}
+							control={control}
+							required={false}
+						/>
+					</div>
 
 					<div>
 						<div className="mb-2">

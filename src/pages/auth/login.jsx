@@ -47,7 +47,7 @@ const login = () => {
 							<div className="text-center 2xl:mb-10 mb-4">
 								<h4 className="font-medium">Sign in</h4>
 								<div className="text-slate-500 text-base">
-									Sign in to your account to start using NightHawk
+									Sign in to your account to start using Skatch Shaper
 								</div>
 							</div>
 							<LoginForm />
@@ -70,7 +70,7 @@ const login = () => {
 							</div> */}
 						</div>
 						<div className="auth-footer text-center">
-							Copyright 2024, NightHawk  All Rights Reserved.
+							Copyright 2024, Skatch Shaper  All Rights Reserved.
 						</div>
 					</div>
 				</div>

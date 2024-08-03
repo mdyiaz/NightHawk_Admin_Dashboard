@@ -10,6 +10,7 @@ import { useCreateCategoryMutation, useUpdateCategoryMutation } from '@/store/ap
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import TextEditor from '../shared/Select/TextEditor';
 
 const CategoryForm = ({ id, data }) => {
 	const { isAuth, auth } = useSelector((state) => state.auth);
@@ -55,6 +56,9 @@ const CategoryForm = ({ id, data }) => {
 		reset({
 			name: data?.name,
 			short_description: data?.short_description,
+			meta_title: data?.meta_title,
+            meta_description: data?.meta_description,
+           
 		});
 	}, [data]);
 
@@ -82,6 +86,26 @@ const CategoryForm = ({ id, data }) => {
 						required={true}
 						error={errors?.short_description}
 					/>
+
+					<Textinput
+						register={register}
+						label="Meta Title"
+						type="text"
+						placeholder="Meta Title"
+						name="meta_title"
+						required={false}
+						error={errors?.meta_title}
+					/>
+
+					<div>
+						<p className='mb-2 text-sm font-semibold'>Meta Description</p>
+						<TextEditor
+							name="meta_description"
+							errors={errors}
+							control={control}
+							required={false}
+						/>
+					</div>
 
 					<Fileinput
 						selectedFile={watch('image')?.[0]}

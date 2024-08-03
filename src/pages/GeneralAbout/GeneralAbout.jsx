@@ -93,7 +93,7 @@ const GeneralAbout = ({ id }) => {
 						error={errors?.short_description}
 					/>
 
-					<Textinput
+					{/* <Textinput
 						register={register}
 						label="Name"
 						type="text"
@@ -101,7 +101,7 @@ const GeneralAbout = ({ id }) => {
 						name="name"
 						required={false}
 						error={errors?.name}
-					/>
+					/> */}
 
 					<Fileinput
 						selectedFile={watch('cover')?.[0]}
