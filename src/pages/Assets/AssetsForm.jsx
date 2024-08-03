@@ -1,4 +1,5 @@
 import SelectSubCategory from '@/components/shared/Select/SelectSubCategory';
+import TextEditor from '@/components/shared/Select/TextEditor';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
@@ -84,6 +85,9 @@ const AssetsForm = ({ id, data }) => {
 					image: null,
 				},
 			],
+
+			meta_title: data?.meta_title,
+			meta_description: data?.meta_description,
 		});
 	}, [data]);
 
@@ -164,6 +168,26 @@ const AssetsForm = ({ id, data }) => {
 						required={true}
 						error={errors?.size}
 					/>
+
+					<Textinput
+						register={register}
+						label="Meta Title"
+						type="text"
+						placeholder="Meta Title"
+						name="meta_title"
+						required={false}
+						error={errors?.meta_title}
+					/>
+
+					<div>
+						<p className='mb-2 text-sm font-semibold'>Meta Description</p>
+						<TextEditor
+							name="meta_description"
+							errors={errors}
+							control={control}
+							required={false}
+						/>
+					</div>
 
 					<div>
 						{fields.map((item, index) => (

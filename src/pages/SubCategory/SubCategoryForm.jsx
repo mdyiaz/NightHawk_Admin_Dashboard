@@ -1,5 +1,6 @@
 
 import SelectCategory from '@/components/shared/Select/SelectCategory';
+import TextEditor from '@/components/shared/Select/TextEditor';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
@@ -33,31 +34,33 @@ const SubCategoryForm = ({ id, data }) => {
 
     const handleFormSubmit = async (data) => {
 
-        	// Manipulate the data as needed
-		const formData = new FormData();
+        // Manipulate the data as needed
+        const formData = new FormData();
 
-		const keys = Object.keys(data);
+        const keys = Object.keys(data);
 
-		keys.forEach((key) => {
-			if (['image'].includes(key)) {
-				if (data[key]) {
-					formData.append('image', data.image[0]);
-				} else {
-					formData.append('image', data.image);
-				}
-			} else {
-				formData.append(key, data[key]);
-			}
-		});
+        keys.forEach((key) => {
+            if (['image'].includes(key)) {
+                if (data[key]) {
+                    formData.append('image', data.image[0]);
+                } else {
+                    formData.append('image', data.image);
+                }
+            } else {
+                formData.append(key, data[key]);
+            }
+        });
 
-		await onSubmit(formData);
+        await onSubmit(formData);
     };
 
     useEffect(() => {
         reset({
             name: data?.name,
             short_description: data?.short_description,
-            category_id: data?.category_id
+            category_id: data?.category_id,
+            meta_title: data?.meta_title,
+            meta_description: data?.meta_description,
         });
     }, [data]);
 
@@ -97,10 +100,31 @@ const SubCategoryForm = ({ id, data }) => {
                         error={errors?.short_description}
                     />
 
+
+                    <Textinput
+                        register={register}
+                        label="Meta Title"
+                        type="text"
+                        placeholder="Meta Title"
+                        name="meta_title"
+                        required={false}
+                        error={errors?.meta_title}
+                    />
+
+                    <div>
+                        <p className='mb-2 text-sm font-semibold'>Meta Description</p>
+                        <TextEditor
+                            name="meta_description"
+                            errors={errors}
+                            control={control}
+                            required={false}
+                        />
+                    </div>
+
                     <Fileinput
                         selectedFile={watch('image')?.[0]}
                         name={'image'}
-						defaultUrl={envConfig.apiImgUrl + data?.image}
+                        defaultUrl={envConfig.apiImgUrl + data?.image}
 
                         preview={true}
                         control={control}
