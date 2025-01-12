@@ -4,6 +4,11 @@ import ApplicationSettings from '@/pages/ApplicationSettings/ApplicationSettings
 import Assets from '@/pages/Assets/Assets';
 import AssetsCreate from '@/pages/Assets/AssetsCreate';
 import AssetsEdit from '@/pages/Assets/AssetsEdit';
+import Blogs from '@/pages/Blogs/Blogs';
+import BlogsAdd from '@/pages/Blogs/BlogsAdd';
+import BlogsForm from '@/pages/Blogs/BlogsForm';
+import BlogsUpdate from '@/pages/Blogs/BlogsUpdate';
+import BlogsView from '@/pages/Blogs/BlogsView';
 import AddCategory from '@/pages/Category/AddCategory';
 import Category from '@/pages/Category/Category';
 import EditCategory from '@/pages/Category/EditCategory';
@@ -11,12 +16,18 @@ import FooterPage from '@/pages/FooterPage/FooterPage';
 import FooterPageCreate from '@/pages/FooterPage/FooterPageCreate';
 import FooterPageEdit from '@/pages/FooterPage/FooterPageEdit';
 import GeneralAbout from '@/pages/GeneralAbout/GeneralAbout';
+import Innovative from '@/pages/Innovative/Innovative';
+import InnovativeAdd from '@/pages/Innovative/InnovativeAdd';
+import InnovativeEdit from '@/pages/Innovative/InnovativeEdit';
 import Social from '@/pages/Social/Social';
 import SocialCreate from '@/pages/Social/SocialCreate';
 import SocialEdit from '@/pages/Social/SocialEdit';
 import SubCategory from '@/pages/SubCategory/SubCategory';
 import SubCategoryCreate from '@/pages/SubCategory/SubCategoryCreate';
 import SubCategoryEdit from '@/pages/SubCategory/SubCategoryEdit';
+import AddSuportedBy from '@/pages/SupportedBy/AddSuportedBy';
+import SupportedBy from '@/pages/SupportedBy/SupportedBy';
+import UpdateSupportedBy from '@/pages/SupportedBy/UpdateSupportedBy';
 
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
@@ -292,37 +303,84 @@ const router = createBrowserRouter([
 					},
 
 					{
-						path: 'edit',
-						element: <Application />,
+						path: 'blogs',
+						children: [
+							{
+								path: '',
+								element: <Blogs />,
+							},
+							{
+								path: 'new',
+								element: <BlogsAdd />,
+							},
+							{
+								path: ':id',
+								children: [
+									{
+										path: '',
+										element: <BlogsView />,
+									},
+									{
+										path: 'edit',
+										element: <BlogsUpdate />,
+									},
+								],
+							},
+						],
 					},
-					{
-						path: 'level',
-						element: <Dashboard />,
-					},
-					{
-						path: 'level2',
-						element: <Dashboard />,
-					},
-					// 2_operation,
-					// ----------------------- 3_accounts--------------------------,
 
-					//  4_general_user
+					{
+						path: 'supported-by',
+						children: [
+							{
+								path: '',
+								element: <SupportedBy />,
+							},
+							{
+								path: 'new',
+								element: <AddSuportedBy />,
+							},
+							{
+								path: ':id',
+								children: [
+									
+									{
+										path: 'edit',
+										element: <UpdateSupportedBy />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'innovative',
+						children: [
+							{
+								path: '',
+								element: <Innovative />,
+							},
+							{
+								path: 'new',
+								element: <InnovativeAdd />,
+							},
+							{
+								path: ':id',
+								children: [
+									
+									{
+										path: 'edit',
+										element: <InnovativeEdit />,
+									},
+								],
+							},
+						],
+					},
+
+					
 				],
 			},
 
-			/*---------------Branch-------------- */
-			{
-				path: 'branch',
-				element: <Layout type="branch" />,
-				children: [],
-			},
-
-			/*---------------Rider-------------- */
-			{
-				path: 'rider',
-				element: <Layout type="rider" />,
-				children: [],
-			},
 		],
 	},
 ]);

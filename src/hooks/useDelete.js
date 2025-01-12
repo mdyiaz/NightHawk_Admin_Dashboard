@@ -1,10 +1,13 @@
 
 
 import { useDeleteAssetsMutation } from '@/store/api/app/Assets/assetsApiSlice';
+import { useDeleteBlogsMutation } from '@/store/api/app/Blogs/BlogsApiSlice';
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
 import { useDeleteFooterPageMutation } from '@/store/api/app/FooterPage/footerPageApiSlice';
+import { useDeleteInnovativeMutation } from '@/store/api/app/Innovative/InnovativeAPiSlice';
 import { useDeleteSocialMutation } from '@/store/api/app/Social/socialApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
+import { useDeleteSupportedbyMutation } from '@/store/api/app/SupportedBy/supportedByApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
 
 
@@ -39,6 +42,17 @@ const useDelete = () => {
 
 	else if (pathArray.includes('social')) {
 		hook = useDeleteSocialMutation;
+	}
+
+	else if (pathArray.includes('blogs')) {
+		hook = useDeleteBlogsMutation;
+	}
+	else if (pathArray.includes('supported-by')) {
+		hook = useDeleteSupportedbyMutation;
+	}
+
+	else if (pathArray.includes('innovative')) {
+		hook = useDeleteInnovativeMutation;
 	}
 
 	

@@ -95,6 +95,42 @@ const navMenu = (user_type, type) => [
 	},
 
 	{
+		title: 'Blogs',
+		icon: 'mdi:world',
+		child: [
+			{
+				childtitle: 'Blogs',
+				childlink: '/admin/blogs',
+			},
+
+		],
+	},
+
+	{
+		title: 'Supported By',
+		icon: 'mdi:world',
+		child: [
+			{
+				childtitle: 'Supported By',
+				childlink: '/admin/supported-by',
+			},
+
+		],
+	},
+
+	{
+		title: 'Innovative',
+		icon: 'mdi:world',
+		child: [
+			{
+				childtitle: 'Innovative',
+				childlink: '/admin/innovative',
+			},
+
+		],
+	},
+
+	{
 		title: 'SEO Analytics',
 		icon: 'heroicons-outline:users',
 		child: [

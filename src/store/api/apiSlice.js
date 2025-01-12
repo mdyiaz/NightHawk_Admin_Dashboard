@@ -12,7 +12,10 @@ export const apiSlice = createApi({
 		'assets',
 		'general-about-us',
 		'application-settings',
-		'social'
+		'social',
+		'blogs',
+		'supportedby',
+		'innovative'
 
 
 
