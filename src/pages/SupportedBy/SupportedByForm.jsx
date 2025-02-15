@@ -30,6 +30,9 @@ const SupportedByForm = ({ id, data }) => {
     const handleFormSubmit = async (data) => {
         const formData = new FormData();
 
+        console.log("subMittedData", data)
+        // return
+
         const keys = Object.keys(data);
 
         keys.forEach((key) => {

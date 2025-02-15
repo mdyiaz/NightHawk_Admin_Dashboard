@@ -52,6 +52,8 @@ const BlogsForm = ({ id, data }) => {
             name: data?.name,
             title: data?.title,
             short_description: data?.short_description,
+            back_link: data?.back_link,
+
         });
     }, [data]);
 
@@ -90,6 +92,17 @@ const BlogsForm = ({ id, data }) => {
                         required={true}
                         error={errors?.short_description}
                     />
+
+<Textinput
+                        register={register}
+                        label="Back Link"
+                        type="text"
+                        placeholder=" Back Link"
+                        name="back_link"
+                        required={true}
+                        error={errors?.back_link}
+                    />
+
 
                     <Fileinput
                         selectedFile={watch('image')?.[0]}

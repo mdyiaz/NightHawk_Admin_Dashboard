@@ -72,6 +72,11 @@ const Blogs = () => {
 			accessor: 'short_description',
 			Cell: (row) => <span>{row?.cell?.value}</span>,
 		},
+		{
+			Header: 'Back Link',
+			accessor: 'back_link',
+			Cell: (row) => <span>{row?.cell?.value}</span>,
+		},
 	];
 
 	return (
