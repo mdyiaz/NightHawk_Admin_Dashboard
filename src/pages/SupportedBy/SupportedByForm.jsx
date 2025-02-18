@@ -52,7 +52,7 @@ const SupportedByForm = ({ id, data }) => {
 
     useEffect(() => {
         reset({
-            name: data?.name,
+            title: data?.title,
             short_description: data?.short_description,
         });
     }, [data]);
@@ -66,9 +66,9 @@ const SupportedByForm = ({ id, data }) => {
                         label="Title"
                         type="text"
                         placeholder="Supported By Title"
-                        name="name"
+                        name="title"
                         required={true}
-                        error={errors?.name}
+                        error={errors?.title}
                     />
 
                     <Textarea

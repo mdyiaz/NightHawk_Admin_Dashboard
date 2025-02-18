@@ -51,7 +51,7 @@ const InnovativeForm = ({ id, data }) => {
 
     useEffect(() => {
         reset({
-            name: data?.name,
+            title: data?.title,
             short_description: data?.short_description,
             urlOne: data?.urlOne,
             urlTwo: data?.urlTwo,
@@ -69,9 +69,9 @@ const InnovativeForm = ({ id, data }) => {
                         label="Title"
                         type="text"
                         placeholder="Innovative Title"
-                        name="name"
+                        name="title"
                         required={true}
-                        error={errors?.name}
+                        error={errors?.title}
                     />
 
                     <Textarea
