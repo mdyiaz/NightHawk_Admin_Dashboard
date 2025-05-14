@@ -1,3 +1,4 @@
+import TextEditor from '@/components/shared/Select/TextEditor';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Fileinput from '@/components/ui/Fileinput';
@@ -93,7 +94,30 @@ const BlogsForm = ({ id, data }) => {
                         error={errors?.short_description}
                     />
 
-<Textinput
+                    <TextEditor
+                        name="paragraph_one"
+                        errors={errors}
+                        control={control}
+                        required={false}
+                    />
+
+                    <TextEditor
+                        name="paragraph_two"
+                        errors={errors}
+                        control={control}
+                        required={false}
+                    />
+
+
+                    <TextEditor
+                        name="paragraph_three"
+                        errors={errors}
+                        control={control}
+                        required={false}
+                    />
+
+
+                    <Textinput
                         register={register}
                         label="Back Link"
                         type="text"
