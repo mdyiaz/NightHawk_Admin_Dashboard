@@ -16,6 +16,8 @@ const BlogsForm = ({ id, data }) => {
     const { isAuth, auth } = useSelector((state) => state.auth);
     const navigate = useNavigate();
 
+    console.log("data", data);
+
     const {
         register,
         unregister,
@@ -54,6 +56,9 @@ const BlogsForm = ({ id, data }) => {
             title: data?.title,
             short_description: data?.short_description,
             back_link: data?.back_link,
+            paragraph_one: data?.paragraph_one,
+            paragraph_two: data?.paragraph_two,
+            paragraph_three: data?.paragraph_three
 
         });
     }, [data]);
@@ -94,27 +99,36 @@ const BlogsForm = ({ id, data }) => {
                         error={errors?.short_description}
                     />
 
-                    <TextEditor
-                        name="paragraph_one"
-                        errors={errors}
-                        control={control}
-                        required={false}
-                    />
+                    <div>
+                        <p className='text-sm font-semibold mb-2'>Paragraph One </p>
+                        <TextEditor
+                            name="paragraph_one"
+                            errors={errors}
+                            control={control}
+                            required={false}
+                        />
+                    </div>
 
-                    <TextEditor
-                        name="paragraph_two"
-                        errors={errors}
-                        control={control}
-                        required={false}
-                    />
+                    <div>
+                        <p className='text-sm font-semibold mb-2'>Paragraph Two </p>
+                        <TextEditor
+                            name="paragraph_two"
+                            errors={errors}
+                            control={control}
+                            required={false}
+                        />
+                    </div>
 
+                    <div>
+                        <p className='text-sm font-semibold mb-2'>Paragraph Three </p>
+                        <TextEditor
+                            name="paragraph_three"
+                            errors={errors}
+                            control={control}
+                            required={false}
+                        />
+                    </div>
 
-                    <TextEditor
-                        name="paragraph_three"
-                        errors={errors}
-                        control={control}
-                        required={false}
-                    />
 
 
                     <Textinput
@@ -123,7 +137,7 @@ const BlogsForm = ({ id, data }) => {
                         type="text"
                         placeholder=" Back Link"
                         name="back_link"
-                        required={true}
+                        // required={true}
                         error={errors?.back_link}
                     />
 
