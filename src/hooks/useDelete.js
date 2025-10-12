@@ -4,6 +4,7 @@ import { useDeleteAssetsMutation } from '@/store/api/app/Assets/assetsApiSlice';
 import { useDeleteBlogsMutation } from '@/store/api/app/Blogs/BlogsApiSlice';
 import { useDeleteCategoryMutation } from '@/store/api/app/Category/categoryApiSlice';
 import { useDeleteFooterPageMutation } from '@/store/api/app/FooterPage/footerPageApiSlice';
+import { useDeleteGalleryMutation } from '@/store/api/app/Gallery/galleryApiSlice';
 import { useDeleteInnovativeMutation } from '@/store/api/app/Innovative/InnovativeAPiSlice';
 import { useDeleteSocialMutation } from '@/store/api/app/Social/socialApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
@@ -53,6 +54,10 @@ const useDelete = () => {
 
 	else if (pathArray.includes('innovative')) {
 		hook = useDeleteInnovativeMutation;
+	}
+
+	else if (pathArray.includes('gallery')) {
+		hook = useDeleteGalleryMutation;
 	}
 
 	

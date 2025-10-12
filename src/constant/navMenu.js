@@ -131,6 +131,18 @@ const navMenu = (user_type, type) => [
 	},
 
 	{
+		title: 'Gallery',
+		icon: 'heroicons-outline:photograph',
+		child: [
+			{
+				childtitle: 'Gallery',
+				childlink: '/admin/gallery',
+			},
+
+		],
+	},
+
+	{
 		title: 'SEO Analytics',
 		icon: 'heroicons-outline:users',
 		child: [

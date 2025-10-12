@@ -12,6 +12,9 @@ import BlogsView from '@/pages/Blogs/BlogsView';
 import AddCategory from '@/pages/Category/AddCategory';
 import Category from '@/pages/Category/Category';
 import EditCategory from '@/pages/Category/EditCategory';
+import AddGallery from '@/pages/Gallery/AddGallery';
+import Gallery from '@/pages/Gallery/Gallery';
+import EditGallery from '@/pages/Gallery/EditGallery';
 import FooterPage from '@/pages/FooterPage/FooterPage';
 import FooterPageCreate from '@/pages/FooterPage/FooterPageCreate';
 import FooterPageEdit from '@/pages/FooterPage/FooterPageEdit';
@@ -371,6 +374,29 @@ const router = createBrowserRouter([
 									{
 										path: 'edit',
 										element: <InnovativeEdit />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'gallery',
+						children: [
+							{
+								path: '',
+								element: <Gallery />,
+							},
+							{
+								path: 'new',
+								element: <AddGallery />,
+							},
+							{
+								path: ':id',
+								children: [
+									{
+										path: 'edit',
+										element: <EditGallery />,
 									},
 								],
 							},
