@@ -15,6 +15,16 @@ export default defineConfig({
 		],
 	},
 
+	server: {
+		proxy: {
+			'/api': {
+				target: 'https://api.sketchshaper.com',
+				changeOrigin: true,
+				secure: true,
+			},
+		},
+	},
+
 	plugins: [
 		rollupReplace({
 			preventAssignment: true,
