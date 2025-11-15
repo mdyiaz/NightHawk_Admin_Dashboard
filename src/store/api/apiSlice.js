@@ -1,5 +1,6 @@
 import envConfig from '@/configs/envConfig';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import Cookies from 'js-cookie';
 
 export const apiSlice = createApi({
 	reducerPath: 'api',
@@ -15,7 +16,8 @@ export const apiSlice = createApi({
 		'social',
 		'blogs',
 		'supportedby',
-		'innovative'
+		'innovative',
+		'patreon'
 
 
 
@@ -23,10 +25,18 @@ export const apiSlice = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: envConfig.apiUrl,
 		prepareHeaders: (headers, { getState }) => {
+			// Try to get token from Redux state first
 			const { auth } = getState().auth;
+			let token = auth?.token;
 
-			if (auth?.accessToken) {
-				headers.set('Authorization', `${auth?.accessToken}`);
+			// If not in Redux state, try to get from cookies
+			if (!token) {
+				token = Cookies.get('token');
+			}
+
+			// If token exists, add it to headers
+			if (token) {
+				headers.set('Authorization', `Bearer ${token}`);
 			}
 		},
 	}),

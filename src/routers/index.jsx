@@ -36,6 +36,9 @@ import AddSketchShaperProCategory from '@/pages/SketchShaperPro/Category/AddSket
 import EditSketchShaperProCategory from '@/pages/SketchShaperPro/Category/EditSketchShaperProCategory';
 import SketchShaperProFile from '@/pages/SketchShaperPro/File/SketchShaperProFile';
 import UploadSketchShaperProFile from '@/pages/SketchShaperPro/File/UploadSketchShaperProFile';
+import PatreonDashboard from '@/pages/Patreon/PatreonDashboard';
+import PatreonUsers from '@/pages/Patreon/PatreonUsers';
+import PatreonUserDetail from '@/pages/Patreon/PatreonUserDetail';
 
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
@@ -445,8 +448,31 @@ const router = createBrowserRouter([
 						],
 					},
 
-					
-				],
+					{
+						path: 'patreon',
+						children: [
+							{
+								path: '',
+								element: <PatreonDashboard />,
+							},
+							{
+								path: 'users',
+								children: [
+									{
+										path: '',
+										element: <PatreonUsers />,
+									},
+									{
+										path: ':id',
+										element: <PatreonUserDetail />,
+									},
+								],
+							},
+						],
+					},
+
+				
+			],
 			},
 
 		],
