@@ -198,7 +198,7 @@ const CustomPaginationTable = ({
 				  ]
 				: []),
 		],
-		[]
+		[COLUMNS, defaultSL, defaultStatus, defaultAction, isView, isLogin, isEdit, isDelete]
 	);
 
 	const tableInstance = useTable(
@@ -280,7 +280,7 @@ const CustomPaginationTable = ({
 
 	useEffect(() => {
 		setPageSize(limit);
-	}, []);
+	}, [limit, setPageSize]);
 
 	return (
 		<>

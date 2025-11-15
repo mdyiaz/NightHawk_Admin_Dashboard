@@ -31,6 +31,11 @@ import SubCategoryEdit from '@/pages/SubCategory/SubCategoryEdit';
 import AddSuportedBy from '@/pages/SupportedBy/AddSuportedBy';
 import SupportedBy from '@/pages/SupportedBy/SupportedBy';
 import UpdateSupportedBy from '@/pages/SupportedBy/UpdateSupportedBy';
+import SketchShaperProCategory from '@/pages/SketchShaperPro/Category/SketchShaperProCategory';
+import AddSketchShaperProCategory from '@/pages/SketchShaperPro/Category/AddSketchShaperProCategory';
+import EditSketchShaperProCategory from '@/pages/SketchShaperPro/Category/EditSketchShaperProCategory';
+import SketchShaperProFile from '@/pages/SketchShaperPro/File/SketchShaperProFile';
+import UploadSketchShaperProFile from '@/pages/SketchShaperPro/File/UploadSketchShaperProFile';
 
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
@@ -399,6 +404,43 @@ const router = createBrowserRouter([
 										element: <EditGallery />,
 									},
 								],
+							},
+						],
+					},
+
+					{
+						path: 'sketchshaper-pro-categories',
+						children: [
+							{
+								path: '',
+								element: <SketchShaperProCategory />,
+							},
+							{
+								path: 'add',
+								element: <AddSketchShaperProCategory />,
+							},
+							{
+								path: ':id',
+								children: [
+									{
+										path: 'edit',
+										element: <EditSketchShaperProCategory />,
+									},
+								],
+							},
+						],
+					},
+
+					{
+						path: 'sketchshaper-pro-files',
+						children: [
+							{
+								path: '',
+								element: <SketchShaperProFile />,
+							},
+							{
+								path: 'upload',
+								element: <UploadSketchShaperProFile />,
 							},
 						],
 					},

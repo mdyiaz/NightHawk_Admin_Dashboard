@@ -143,6 +143,33 @@ const navMenu = (user_type, type) => [
 	},
 
 	{
+		title: 'SketchShaper Pro',
+		icon: 'mdi:package',
+		child: [
+			{
+				childtitle: 'Categories',
+				childlink: '/admin/sketchshaper-pro-categories',
+			},
+
+			{
+				childtitle: 'Add Category',
+				childlink: '/admin/sketchshaper-pro-categories/add',
+			},
+
+			{
+				childtitle: 'Files',
+				childlink: '/admin/sketchshaper-pro-files',
+			},
+
+			{
+				childtitle: 'Upload Files',
+				childlink: '/admin/sketchshaper-pro-files/upload',
+			},
+
+		],
+	},
+
+	{
 		title: 'SEO Analytics',
 		icon: 'heroicons-outline:users',
 		child: [
