@@ -151,20 +151,20 @@ const navMenu = (user_type, type) => [
 				childlink: '/admin/sketchshaper-pro-categories',
 			},
 
-			{
-				childtitle: 'Add Category',
-				childlink: '/admin/sketchshaper-pro-categories/add',
-			},
+			// {
+			// 	childtitle: 'Add Category',
+			// 	childlink: '/admin/sketchshaper-pro-categories/new',
+			// },
 
 			{
 				childtitle: 'Files',
 				childlink: '/admin/sketchshaper-pro-files',
 			},
 
-			{
-				childtitle: 'Upload Files',
-				childlink: '/admin/sketchshaper-pro-files/upload',
-			},
+			// {
+			// 	childtitle: 'Upload Files',
+			// 	childlink: '/admin/sketchshaper-pro-files/new',
+			// },
 
 		],
 	},

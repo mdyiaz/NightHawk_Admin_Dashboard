@@ -68,6 +68,7 @@ const SketchShaperProCategory = () => {
 				order={order}
 				setOrder={setOrder}
 				defaultStatus={false}
+				isView={false}
 			/>
 		</>
 	);

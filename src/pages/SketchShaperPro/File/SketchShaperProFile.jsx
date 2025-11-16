@@ -26,17 +26,24 @@ const SketchShaperProFile = () => {
 		{
 			Header: 'Preview Image',
 			accessor: 'preview_image',
-			Cell: (row) => (
-				<img
-					src={`${envConfig.apiImgUrl}${row?.cell?.value}`}
-					alt="preview"
-					className="h-20 w-auto object-cover rounded-lg"
-					onError={(e) => {
-						e.target.onerror = null;
-						e.target.src = noImage;
-					}}
-				/>
-			),
+			Cell: (row) => {
+				const imageUrl = row?.cell?.value;
+				// If URL starts with http, use it directly; otherwise prepend the base URL
+				const fullUrl = imageUrl?.startsWith('http') 
+					? imageUrl 
+					: `${envConfig.apiImgUrl}/api/uploads${imageUrl}`;
+				return (
+					<img
+						src={fullUrl}
+						alt="preview"
+						className="h-20 w-auto object-cover rounded-lg"
+						onError={(e) => {
+							e.target.onerror = null;
+							e.target.src = noImage;
+						}}
+					/>
+				);
+			},
 		},
 		{
 			Header: 'File Type',
@@ -84,6 +91,8 @@ const SketchShaperProFile = () => {
 				order={order}
 				setOrder={setOrder}
 				defaultStatus={false}
+				isEdit={false}
+				isView={false}
 			/>
 		</>
 	);

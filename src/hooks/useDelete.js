@@ -10,6 +10,7 @@ import { useDeleteSocialMutation } from '@/store/api/app/Social/socialApiSlice';
 import { useDeleteSubCategoryMutation } from '@/store/api/app/SubCategory/subCategoryApiSlice';
 import { useDeleteSupportedbyMutation } from '@/store/api/app/SupportedBy/supportedByApiSlice';
 import { useDeleteSliderMutation } from '@/store/api/app/website/slider/sliderApiSlice';
+import { useDeleteSketchShaperProCategoryMutation, useDeleteSketchShaperProFileMutation } from '@/store/api/app/SketchShaperPro/sketchShaperProApiSlice';
 
 
 import { useLocation } from 'react-router-dom';
@@ -60,8 +61,13 @@ const useDelete = () => {
 		hook = useDeleteGalleryMutation;
 	}
 
-	
-	
+	else if (pathArray.includes('sketchshaper-pro-categories')) {
+		hook = useDeleteSketchShaperProCategoryMutation;
+	}
+
+	else if (pathArray.includes('sketchshaper-pro-files')) {
+		hook = useDeleteSketchShaperProFileMutation;
+	}
 
 	const [deleteRecord, { isLoading, isError, error, isSuccess }] = hook
 		? hook()

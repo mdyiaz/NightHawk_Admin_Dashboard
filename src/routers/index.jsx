@@ -419,7 +419,7 @@ const router = createBrowserRouter([
 								element: <SketchShaperProCategory />,
 							},
 							{
-								path: 'add',
+								path: 'new',
 								element: <AddSketchShaperProCategory />,
 							},
 							{
@@ -442,7 +442,7 @@ const router = createBrowserRouter([
 								element: <SketchShaperProFile />,
 							},
 							{
-								path: 'upload',
+								path: 'new',
 								element: <UploadSketchShaperProFile />,
 							},
 						],

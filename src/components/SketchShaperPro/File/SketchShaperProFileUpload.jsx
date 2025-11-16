@@ -5,6 +5,10 @@ import ChunkedUploader from '@/utils/ChunkedUploader';
 import UploadQueue from '@/utils/UploadQueue';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import Fileinput from '@/components/ui/Fileinput';
+import { useUpdateSketchShaperProFilePreviewMutation } from '@/store/api/app/SketchShaperPro/sketchShaperProApiSlice';
+import { useForm } from 'react-hook-form';
 
 const SketchShaperProFileUpload = () => {
 	const { auth } = useSelector((state) => state.auth);
@@ -13,13 +17,48 @@ const SketchShaperProFileUpload = () => {
 	const [uploads, setUploads] = useState([]);
 	const uploadQueueRef = useRef(null);
 	const fileInputRef = useRef(null);
+	const [updateFilePreview] = useUpdateSketchShaperProFilePreviewMutation();
+
+	const { control, watch } = useForm({
+		defaultValues: {
+			preview_image: null,
+		},
+	});
 
 	useEffect(() => {
 		uploadQueueRef.current = new UploadQueue(1, (queueStatus) => {
 			// Update UI when queue status changes
+			const allItems = [
+				...queueStatus.all.queued,
+				...queueStatus.all.active,
+				...queueStatus.all.completed,
+				...queueStatus.all.failed,
+			];
+			
 			setUploads((prev) => {
-				const updated = [...prev];
-				return updated;
+				return prev.map((upload) => {
+					const queueItem = allItems.find((item) => item.id === upload.id);
+					if (queueItem) {
+						// Show toast notification on completion
+						if (queueItem.status === 'completed' && upload.status !== 'completed') {
+							toast.success(`✅ ${upload.name} uploaded successfully!`);
+							// Upload preview image if selected
+							const previewImage = watch('preview_image')?.[0];
+							if (previewImage && queueItem.uploader?.fileId) {
+								handleUploadPreviewImage(queueItem.uploader.fileId, previewImage);
+							}
+						}
+						// Show toast notification on failure
+						if (queueItem.status === 'failed' && upload.status !== 'failed') {
+							toast.error(`❌ Failed to upload ${upload.name}`);
+						}
+						return {
+							...upload,
+							status: queueItem.status,
+						};
+					}
+					return upload;
+				});
 			});
 		});
 
@@ -37,13 +76,16 @@ const SketchShaperProFileUpload = () => {
 		}
 
 		files.forEach((file) => {
+			let itemId = null;
+
 			const uploader = new ChunkedUploader(
 				file,
 				selectedCategory,
 				(progress) => {
+					// Update progress for the specific upload item
 					setUploads((prev) =>
 						prev.map((u) =>
-							u.id === uploader.fileId
+							u.id === itemId
 								? {
 										...u,
 										progress: progress.progress,
@@ -57,7 +99,7 @@ const SketchShaperProFileUpload = () => {
 				''
 			);
 
-			const itemId = uploadQueueRef.current.add(uploader, {
+			itemId = uploadQueueRef.current.add(uploader, {
 				fileName: file.name,
 				fileSize: file.size,
 			});
@@ -142,6 +184,21 @@ const SketchShaperProFileUpload = () => {
 		}
 	};
 
+	const handleUploadPreviewImage = async (fileId, previewImageFile) => {
+		if (!previewImageFile) return;
+
+		try {
+			const formData = new FormData();
+			formData.append('preview_image', previewImageFile);
+
+			await updateFilePreview({ id: fileId, data: formData });
+			toast.success('✅ Preview image uploaded successfully!');
+		} catch (error) {
+			console.error('Failed to upload preview image:', error);
+			toast.error('❌ Failed to upload preview image');
+		}
+	};
+
 	return (
 		<div className="space-y-6">
 			<Card title="Upload SketchShaper Pro Files">
@@ -161,6 +218,14 @@ const SketchShaperProFileUpload = () => {
 							))}
 						</select>
 					</div>
+
+					<Fileinput
+						selectedFile={watch('preview_image')?.[0]}
+						name={'preview_image'}
+						preview={true}
+						control={control}
+						label="File Preview Image (Optional)"
+					/>
 
 					<div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition">
 						<input
