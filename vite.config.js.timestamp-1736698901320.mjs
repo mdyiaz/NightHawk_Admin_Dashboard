@@ -5,7 +5,7 @@ import path from "path";
 import { defineConfig } from "file:///run/media/mdriaz/New%20Volume2/My%20Projects/NightHawk/Admin_Dashboard/NightHawk_Admin_Dashboard/node_modules/vite/dist/node/index.js";
 var __vite_injected_original_dirname = "/run/media/mdriaz/New Volume2/My Projects/NightHawk/Admin_Dashboard/NightHawk_Admin_Dashboard";
 var vite_config_default = defineConfig({
-  base: "https://admin.nighthawkk.com",
+  base: "https://admin.sketchshaper.com",
   resolve: {
     alias: [
       {
