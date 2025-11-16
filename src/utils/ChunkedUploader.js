@@ -17,6 +17,14 @@ class ChunkedUploader {
 
 	async initialize() {
 		try {
+			console.log('Initializing upload with:', {
+				name: this.file.name.replace(/\.[^/.]+$/, ''),
+				sketchshaper_pro_category_id: this.categoryId,
+				totalChunks: this.totalChunks,
+				totalSize: this.file.size,
+				originalFilename: this.file.name,
+			});
+
 			const response = await axios.post(
 				`${this.apiBaseUrl}/api/sketchshaper-pro-files/initialize`,
 				{
@@ -28,11 +36,36 @@ class ChunkedUploader {
 				}
 			);
 
+			console.log('Full initialize response:', response);
+			console.log('Response status:', response.status);
+			console.log('Response data:', response.data);
+			console.log('Response data.data:', response.data.data);
+			
+			if (!response.data.data) {
+				console.error('No data in response!');
+				return false;
+			}
+
 			this.uploadSessionId = response.data.data.uploadSessionId;
 			this.fileId = response.data.data.fileId;
+			
+			if (!this.uploadSessionId || !this.fileId) {
+				console.error('Missing uploadSessionId or fileId:', {
+					uploadSessionId: this.uploadSessionId,
+					fileId: this.fileId
+				});
+				return false;
+			}
+			
+			console.log('Upload initialized successfully:', {
+				uploadSessionId: this.uploadSessionId,
+				fileId: this.fileId
+			});
 			return true;
 		} catch (error) {
 			console.error('Failed to initialize upload:', error);
+			console.error('Error response:', error.response?.data);
+			console.error('Error status:', error.response?.status);
 			return false;
 		}
 	}
