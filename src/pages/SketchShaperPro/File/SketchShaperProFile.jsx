@@ -31,7 +31,7 @@ const SketchShaperProFile = () => {
 				// If URL starts with http, use it directly; otherwise prepend the base URL
 				const fullUrl = imageUrl?.startsWith('http') 
 					? imageUrl 
-					: `${envConfig.apiImgUrl}/api/uploads/${imageUrl}`;
+					: `${envConfig.apiImgUrl}/${imageUrl}`;
 				return (
 					<img
 						src={fullUrl}
