@@ -560,18 +560,17 @@ const AssetsForm = ({ id, data }) => {
             text="Cancel"
             className="btn-light"
           />
-          {!isAssetCreated ? (
-            <Button
-              isLoading={isLoading}
-              type="submit"
-              text="Create Asset"
-              className="btn-dark"
-            />
-          ) : (
+          <Button
+            isLoading={isLoading}
+            type="submit"
+            text={id ? "Update Asset" : "Create Asset"}
+            className="btn-dark"
+          />
+          {isAssetCreated && (
             <Button
               onClick={() => navigate(-1)}
               text="Done"
-              className="btn-dark"
+              className="btn-success"
             />
           )}
         </div>
